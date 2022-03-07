@@ -24,6 +24,7 @@ class T1073161hsView(View):
          t1073161hs = T1073161hs.objects.all()
          t1073161h_serializer=T1073161hSerializer(t1073161hs,many=True)
          return JsonResponse(t1073161h_serializer.data,safe=False)
+         
 
     def put(self,request):
          t1073161h_data=JSONParser().parse(request)
