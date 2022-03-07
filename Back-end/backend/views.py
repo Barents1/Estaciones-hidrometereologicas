@@ -10,36 +10,50 @@ from backend.serializers import *
 from django.http import HttpResponse
 from django.views.generic import View
 
+
+class Calculos():
+     def sumar(self):
+          return(5+3)
+
+class DatosCalculos():
+
+     def resul(self):
+          calcular = Calculos()
+          calcular.sumar()
+          
 class T1073161hsView(View):
+     
+     datoscal = DatosCalculos()
+     print(datoscal.resul())
       
-    def post(self,request):
-         t1073161h_data=JSONParser().parse(request)
-         t1073161h_serializer=T1073161hSerializer(data=t1073161h_data)
-         if t1073161h_serializer.is_valid():
-             t1073161h_serializer.sate()
-             return JsonResponse('Se agrrego correctamente',safe=False)
-         return   JsonResponse('No se pudo agregar ',safe=False) 
-   
-    def get(self,request):
-         t1073161hs = T1073161hs.objects.all()
-         t1073161h_serializer=T1073161hSerializer(t1073161hs,many=True)
-         return JsonResponse(t1073161h_serializer.data,safe=False)
-         
+     def post(self,request):
+          t1073161h_data=JSONParser().parse(request)
+          t1073161h_serializer=T1073161hSerializer(data=t1073161h_data)
+          if t1073161h_serializer.is_valid():
+               t1073161h_serializer.sate()
+               return JsonResponse('Se agrrego correctamente',safe=False)
+          return   JsonResponse('No se pudo agregar ',safe=False) 
+     
+     def get(self,request):
+          t1073161hs = T1073161hs.objects.all()
+          t1073161h_serializer=T1073161hSerializer(t1073161hs,many=True)
+          return JsonResponse(t1073161h_serializer.data,safe=False)
 
-    def put(self,request):
-         t1073161h_data=JSONParser().parse(request)
-         t1073161h=T1073161hs.objects.get(id_temp_int_baro=t1073161h_data['id_temp_int_baro'])
-         t1073161h_serializer=T1073161hSerializer(t1073161h,data=t1073161h_data)
-         if t1073161h_serializer.is_valid():
-            t1073161h_serializer.sate()
-            return JsonResponse("Updated Successfully",safe=False)
-         return JsonResponse("Failed to Update")
 
-    def delete(self,request,id):
-        t1073161h=T1073161hs.objects.get(id_temp_int_baro=id)
-        t1073161h.delete()
-        return JsonResponse("Deleted Successfully",safe=False)
- 
+     def put(self,request):
+          t1073161h_data=JSONParser().parse(request)
+          t1073161h=T1073161hs.objects.get(id_temp_int_baro=t1073161h_data['id_temp_int_baro'])
+          t1073161h_serializer=T1073161hSerializer(t1073161h,data=t1073161h_data)
+          if t1073161h_serializer.is_valid():
+               t1073161h_serializer.sate()
+               return JsonResponse("Updated Successfully",safe=False)
+          return JsonResponse("Failed to Update")
+
+     def delete(self,request,id):
+          t1073161h=T1073161hs.objects.get(id_temp_int_baro=id)
+          t1073161h.delete()
+          return JsonResponse("Deleted Successfully",safe=False)
+     
 class T1073161hvalsView(View):
       
     def post(self,request):
