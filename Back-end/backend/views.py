@@ -1,2056 +1,2066 @@
 from pyexpat import model
 from re import template
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-from rest_framework.relations import method_overridden
 from rest_framework.utils import json
-from django.views.generic import View
+from rest_framework.relations import method_overridden
 from backend.models import *
 from backend.serializers import *
 from django.http import HttpResponse
+from django.views.generic import View
 
-class V1073161hsApi(View):
+class T1073161hsView(View):
       
     def post(self,request):
-         v1073161h_data=JSONParser().parse(request)
-         v1073161h_serializer=V1073161hSerializer(data=v1073161h_data)
-         if v1073161h_serializer.is_valid():
-             v1073161h_serializer.save()
+         t1073161h_data=JSONParser().parse(request)
+         t1073161h_serializer=T1073161hSerializer(data=t1073161h_data)
+         if t1073161h_serializer.is_valid():
+             t1073161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1073161hs = V1073161hs.objects.all()
-         v1073161h_serializer=V1073161hSerializer(v1073161hs,many=True)
-         return JsonResponse(v1073161h_serializer.data,safe=False)
+         t1073161hs = T1073161hs.objects.all()
+         t1073161h_serializer=T1073161hSerializer(t1073161hs,many=True)
+         return JsonResponse(t1073161h_serializer.data,safe=False)
 
     def put(self,request):
-         v1073161h_data=JSONParser().parse(request)
-         v1073161h=V1073161hs.objects.get(id_temp_int_baro=v1073161h_data['id_temp_int_baro'])
-         v1073161h_serializer=V1073161hSerializer(v1073161h,data=v1073161h_data)
-         if v1073161h_serializer.is_valid():
-            v1073161h_serializer.save()
+         t1073161h_data=JSONParser().parse(request)
+         t1073161h=T1073161hs.objects.get(id_temp_int_baro=t1073161h_data['id_temp_int_baro'])
+         t1073161h_serializer=T1073161hSerializer(t1073161h,data=t1073161h_data)
+         if t1073161h_serializer.is_valid():
+            t1073161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1073161h=V1073161hs.objects.get(id_temp_int_baro=id)
-        v1073161h.delete()
+        t1073161h=T1073161hs.objects.get(id_temp_int_baro=id)
+        t1073161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)
  
-class V1073161hvalsApi(View):
+class T1073161hvalsView(View):
       
     def post(self,request):
-         v1073161hval_data=JSONParser().parse(request)
-         v1073161hval_serializer=V1073161hvalSerializer(data=v1073161hval_data)
-         if v1073161hval_serializer.is_valid():
-             v1073161hval_serializer.save()
+         t1073161hval_data=JSONParser().parse(request)
+         t1073161hval_serializer=T1073161hvalSerializer(data=t1073161hval_data)
+         if t1073161hval_serializer.is_valid():
+             t1073161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1073161hvals = V1073161hvals.objects.all()
-         v1073161hval_serializer=V1073161hvalSerializer(v1073161hvals,many=True)
-         return JsonResponse(v1073161hval_serializer.data,safe=False)
+         t1073161hvals = T1073161hvals.objects.all()
+         t1073161hval_serializer=T1073161hvalSerializer(t1073161hvals,many=True)
+         return JsonResponse(t1073161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1073161hval_data=JSONParser().parse(request)
-         v1073161hval=V1073161hvals.objects.get(id_temp_int_baro_val=v1073161hval_data['id_temp_int_baro_val'])
-         v1073161hval_serializer=V1073161hSerializer(v1073161hval,data=v1073161hval_data)
-         if v1073161hval_serializer.is_valid():
-            v1073161hval_serializer.save()
+         t1073161hval_data=JSONParser().parse(request)
+         t1073161hval=T1073161hvals.objects.get(id_temp_int_baro_val=t1073161hval_data['id_temp_int_baro_val'])
+         t1073161hval_serializer=T1073161hSerializer(t1073161hval,data=t1073161hval_data)
+         if t1073161hval_serializer.is_valid():
+            t1073161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1073161hval=V1073161hvals.objects.get(id_temp_int_baro_val=id)
-        v1073161hval.delete()
+        t1073161hval=T1073161hvals.objects.get(id_temp_int_baro_val=id)
+        t1073161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)
 
 
-class V1087161hsApi(View):
+class T1087161hsView(View):
       
     def post(self,request):
-         v1087161h_data=JSONParser().parse(request)
-         v1087161h_serializer=V1087161hSerializer(data=v1087161h_data)
-         if v1087161h_serializer.is_valid():
-             v1087161h_serializer.save()
+         t1087161h_data=JSONParser().parse(request)
+         t1087161h_serializer=T1087161hSerializer(data=t1087161h_data)
+         if t1087161h_serializer.is_valid():
+             t1087161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1087161hs = V1087161hs.objects.all()
-         v1087161h_serializer=V1087161hSerializer(v1087161hs,many=True)
-         return JsonResponse(v1087161h_serializer.data,safe=False)
+         t1087161hs = T1087161hs.objects.all()
+         t1087161h_serializer=T1087161hSerializer(t1087161hs,many=True)
+         return JsonResponse(t1087161h_serializer.data,safe=False)
 
     def put(self,request):
-         v1087161h_data=JSONParser().parse(request)
-         v1087161h=V1087161hs.objects.get(id_pres_corre=v1087161h_data['id_temp_int_baro_val'])
-         v1087161h_serializer=V1087161hSerializer(v1087161h,data=v1087161h_data)
-         if v1087161h_serializer.is_valid():
-            v1087161h_serializer.save()
+         t1087161h_data=JSONParser().parse(request)
+         t1087161h=T1087161hs.objects.get(id_pres_corre=t1087161h_data['id_temp_int_baro_val'])
+         t1087161h_serializer=T1087161hSerializer(t1087161h,data=t1087161h_data)
+         if t1087161h_serializer.is_valid():
+            t1087161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1087161h=V1087161hs.objects.get(id_pres_corre=id)
-        v1087161h.delete()
+        t1087161h=T1087161hs.objects.get(id_pres_corre=id)
+        t1087161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)
 
 
-class V1087161hvalsApi(View):
+class T1087161hvalsView(View):
       
     def post(self,request):
-         v1087161hval_data=JSONParser().parse(request)
-         v1087161hval_serializer=V1087161hvalSerializer(data=v1087161hval_data)
-         if v1087161hval_serializer.is_valid():
-             v1087161hval_serializer.save()
+         t1087161hval_data=JSONParser().parse(request)
+         t1087161hval_serializer=T1087161hvalSerializer(data=t1087161hval_data)
+         if t1087161hval_serializer.is_valid():
+             t1087161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1087161hvals = V1087161hvals.objects.all()
-         v1087161hval_serializer=V1087161hvalSerializer(v1087161hvals,many=True)
-         return JsonResponse(v1087161hval_serializer.data,safe=False)
+         t1087161hvals = T1087161hvals.objects.all()
+         t1087161hval_serializer=T1087161hvalSerializer(t1087161hvals,many=True)
+         return JsonResponse(t1087161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1087161hval_data=JSONParser().parse(request)
-         v1087161hval=V1087161hvals.objects.get(id_pres_corre_val=v1087161hval_data['id_temp_int_baro_val'])
-         v1087161hval_serializer=V1073161hSerializer(v1087161hval,data=v1087161hval_data)
-         if v1087161hval_serializer.is_valid():
-            v1087161hval_serializer.save()
+         t1087161hval_data=JSONParser().parse(request)
+         t1087161hval=T1087161hvals.objects.get(id_pres_corre_val=t1087161hval_data['id_temp_int_baro_val'])
+         t1087161hval_serializer=T1073161hSerializer(t1087161hval,data=t1087161hval_data)
+         if t1087161hval_serializer.is_valid():
+            t1087161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1087161hval=V1087161hvals.objects.get(id_pres_corre_val=id)
-        v1087161hval.delete()
+        t1087161hval=T1087161hvals.objects.get(id_pres_corre_val=id)
+        t1087161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False) 
 
-class V1097161hsApi(View):
+class T1097161hsView(View):
       
     def post(self,request):
          
-         v1097161h_data=JSONParser().parse(request)
-         v1097161h_serializer=V1097161hSerializer(data=v1097161h_data)
-         if v1097161h_serializer.is_valid():
-             v1097161h_serializer.save()
+         t1097161h_data=JSONParser().parse(request)
+         t1097161h_serializer=T1097161hSerializer(data=t1097161h_data)
+         if t1097161h_serializer.is_valid():
+             t1097161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1097161hs = V1097161hs.objects.all()
-         v1097161h_serializer=V1097161hSerializer(v1097161hs,many=True)
-         return JsonResponse(v1097161h_serializer.data,safe=False)
+         t1097161hs = T1097161hs.objects.all()
+         t1097161h_serializer=T1097161hSerializer(t1097161hs,many=True)
+         return JsonResponse(t1097161h_serializer.data,safe=False)
 
     def put(self,request):
-         v1097161h_data=JSONParser().parse(request)
-         v1097161h=V1097161hs.objects.get(id_pres_conv=v1097161h_data['id_pres_conv'])
-         v1097161h_serializer=V1073161hSerializer(v1097161h,data=v1097161h_data)
-         if v1097161h_serializer.is_valid():
-            v1097161h_serializer.save()
+         t1097161h_data=JSONParser().parse(request)
+         t1097161h=T1097161hs.objects.get(id_pres_cont=t1097161h_data['id_pres_cont'])
+         t1097161h_serializer=T1073161hSerializer(t1097161h,data=t1097161h_data)
+         if t1097161h_serializer.is_valid():
+            t1097161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1097161h=V1097161hs.objects.get(id_pres_conv=id)
-        v1097161h.delete()
+        t1097161h=T1097161hs.objects.get(id_pres_cont=id)
+        t1097161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)        
 
 
-class V1097161hvalsApi(View):
+class T1097161hvalsView(View):
       
     def post(self,request):
          
-         v1097161hval_data=JSONParser().parse(request)
-         v1097161hval_serializer=V1097161hvalSerializer(data=v1097161hval_data)
-         if v1097161hval_serializer.is_valid():
-             v1097161hval_serializer.save()
+         t1097161hval_data=JSONParser().parse(request)
+         t1097161hval_serializer=T1097161hvalSerializer(data=t1097161hval_data)
+         if t1097161hval_serializer.is_valid():
+             t1097161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1097161hvals = V1097161hvals.objects.all()
-         v1097161hval_serializer=V1097161hvalSerializer(v1097161hvals,many=True)
-         return JsonResponse(v1097161hval_serializer.data,safe=False)
+         t1097161hvals = T1097161hvals.objects.all()
+         t1097161hval_serializer=T1097161hvalSerializer(t1097161hvals,many=True)
+         return JsonResponse(t1097161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1097161hval_data=JSONParser().parse(request)
-         v1097161hval=V1097161hvals.objects.get(id_pres_conv_val=v1097161hval_data['id_pres_conv_val'])
-         v1097161hval_serializer=V1073161hSerializer(v1097161hval,data=v1097161hval_data)
-         if v1097161hval_serializer.is_valid():
-            v1097161hval_serializer.save()
+         t1097161hval_data=JSONParser().parse(request)
+         t1097161hval=T1097161hvals.objects.get(id_pres_cont_val=t1097161hval_data['id_pres_cont_val'])
+         t1097161hval_serializer=T1073161hSerializer(t1097161hval,data=t1097161hval_data)
+         if t1097161hval_serializer.is_valid():
+            t1097161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1097161hval=V1097161hvals.objects.get(id_pres_conv_val=id)
-        v1097161hval.delete()
+        t1097161hval=T1097161hvals.objects.get(id_pres_cont_val=id)
+        t1097161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)      
 
 
-class V1263011hsApi(View):
+class T1263011hsView(View):
       
     def post(self,request):
          
-         v1263011h_data=JSONParser().parse(request)
-         v1263011h_serializer=V1263011hSerializer(data=v1263011h_data)
-         if v1263011h_serializer.is_valid():
-             v1263011h_serializer.save()
+         t1263011h_data=JSONParser().parse(request)
+         t1263011h_serializer=T1263011hSerializer(data=t1263011h_data)
+         if t1263011h_serializer.is_valid():
+             t1263011h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1263011hs = V1263011hs.objects.all()
-         v1263011h_serializer=V1263011hSerializer(v1263011hs,many=True)
-         return JsonResponse(v1263011h_serializer.data,safe=False)
+         t1263011hs = T1263011hs.objects.all()
+         t1263011h_serializer=T1263011hSerializer(t1263011hs,many=True)
+         return JsonResponse(t1263011h_serializer.data,safe=False)
 
     def put(self,request):
-         v1263011h_data=JSONParser().parse(request)
-         v1263011h=V1263011hs.objects.get(id_caudal_max_hor=v1263011h_data['id_caudal_max_hor'])
-         v1263011h_serializer=V1073161hSerializer(v1263011h,data=v1263011h_data)
-         if v1263011h_serializer.is_valid():
-            v1263011h_serializer.save()
+         t1263011h_data=JSONParser().parse(request)
+         t1263011h=T1263011hs.objects.get(id_caudal_max_hor=t1263011h_data['id_caudal_max_hor'])
+         t1263011h_serializer=T1073161hSerializer(t1263011h,data=t1263011h_data)
+         if t1263011h_serializer.is_valid():
+            t1263011h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1263011h=V1263011hs.objects.get(id_caudal_max_hor=id)
-        v1263011h.delete()
+        t1263011h=T1263011hs.objects.get(id_caudal_max_hor=id)
+        t1263011h.delete()
         return JsonResponse("Deleted Successfully",safe=False)      
 
 
-class V1263011hvalsApi(View):
+class T1263011hvalsView(View):
       
     def post(self,request):
          
-         v1263011hval_data=JSONParser().parse(request)
-         v1263011hval_serializer=V1263011hvalSerializer(data=v1263011hval_data)
-         if v1263011hval_serializer.is_valid():
-             v1263011hval_serializer.save()
+         t1263011hval_data=JSONParser().parse(request)
+         t1263011hval_serializer=T1263011hvalSerializer(data=t1263011hval_data)
+         if t1263011hval_serializer.is_valid():
+             t1263011hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1263011hvals = V1263011hvals.objects.all()
-         v1263011hval_serializer=V1263011hvalSerializer(v1263011hvals,many=True)
-         return JsonResponse(v1263011hval_serializer.data,safe=False)
+         t1263011hvals = T1263011hvals.objects.all()
+         t1263011hval_serializer=T1263011hvalSerializer(t1263011hvals,many=True)
+         return JsonResponse(t1263011hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1263011hval_data=JSONParser().parse(request)
-         v1263011hval=V1263011hvals.objects.get(id_caudal_max_hor_val=v1263011hval_data['id_caudal_max_hor_val'])
-         v1263011hval_serializer=V1073161hSerializer(v1263011hval,data=v1263011hval_data)
-         if v1263011hval_serializer.is_valid():
-            v1263011hval_serializer.save()
+         t1263011hval_data=JSONParser().parse(request)
+         t1263011hval=T1263011hvals.objects.get(id_caudal_max_hor_val=t1263011hval_data['id_caudal_max_hor_val'])
+         t1263011hval_serializer=T1073161hSerializer(t1263011hval,data=t1263011hval_data)
+         if t1263011hval_serializer.is_valid():
+            t1263011hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1263011hval=V1263011hvals.objects.get(id_caudal_max_hor_val=id)
-        v1263011hval.delete()
+        t1263011hval=T1263011hvals.objects.get(id_caudal_max_hor_val=id)
+        t1263011hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V12630161hsApi(View):
+class T12630161hsView(View):
       
     def post(self,request):
          
-         v12630161h_data=JSONParser().parse(request)
-         v12630161h_serializer=V12630161hSerializer(data=v12630161h_data)
-         if v12630161h_serializer.is_valid():
-             v12630161h_serializer.save()
+         t12630161h_data=JSONParser().parse(request)
+         t12630161h_serializer=T12630161hSerializer(data=t12630161h_data)
+         if t12630161h_serializer.is_valid():
+             t12630161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v12630161hs = V12630161hs.objects.all()
-         v12630161h_serializer=V12630161hSerializer(v12630161hs,many=True)
-         return JsonResponse(v12630161h_serializer.data,safe=False)
+         t12630161hs = T12630161hs.objects.all()
+         t12630161h_serializer=T12630161hSerializer(t12630161hs,many=True)
+         return JsonResponse(t12630161h_serializer.data,safe=False)
 
     def put(self,request):
-         v12630161h_data=JSONParser().parse(request)
-         v12630161h=V12630161hs.objects.get(id_caudal_ins_hor=v12630161h_data['id_caudal_ins_hor'])
-         v12630161h_serializer=V1073161hSerializer(v12630161h,data=v12630161h_data)
-         if v12630161h_serializer.is_valid():
-            v12630161h_serializer.save()
+         t12630161h_data=JSONParser().parse(request)
+         t12630161h=T12630161hs.objects.get(id_caudal_ins_hor=t12630161h_data['id_caudal_ins_hor'])
+         t12630161h_serializer=T1073161hSerializer(t12630161h,data=t12630161h_data)
+         if t12630161h_serializer.is_valid():
+            t12630161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v12630161h=V12630161hs.objects.get(id_caudal_ins_hor=id)
-        v12630161h.delete()
+        t12630161h=T12630161hs.objects.get(id_caudal_ins_hor=id)
+        t12630161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
-class V12630161hvalsApi(View):
+class T12630161hvalsView(View):
       
     def post(self,request):
          
-         v12630161hval_data=JSONParser().parse(request)
-         v12630161hval_serializer=V12630161hvalSerializer(data=v12630161hval_data)
-         if v12630161hval_serializer.is_valid():
-             v12630161hval_serializer.save()
+         t12630161hval_data=JSONParser().parse(request)
+         t12630161hval_serializer=T12630161hvalSerializer(data=t12630161hval_data)
+         if t12630161hval_serializer.is_valid():
+             t12630161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v12630161hvals = V12630161hvals.objects.all()
-         v12630161hval_serializer=V12630161hvalSerializer(v12630161hvals,many=True)
-         return JsonResponse(v12630161hval_serializer.data,safe=False)
+         t12630161hvals = T12630161hvals.objects.all()
+         t12630161hval_serializer=T12630161hvalSerializer(t12630161hvals,many=True)
+         return JsonResponse(t12630161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v12630161hval_data=JSONParser().parse(request)
-         v12630161hval=V12630161hvals.objects.get(id_caudal_ins_hor_val=v12630161hval_data['id_caudal_ins_hor_val'])
-         v12630161hval_serializer=V1073161hSerializer(v12630161hval,data=v12630161hval_data)
-         if v12630161hval_serializer.is_valid():
-            v12630161hval_serializer.save()
+         t12630161hval_data=JSONParser().parse(request)
+         t12630161hval=T12630161hvals.objects.get(id_caudal_ins_hor_val=t12630161hval_data['id_caudal_ins_hor_val'])
+         t12630161hval_serializer=T1073161hSerializer(t12630161hval,data=t12630161hval_data)
+         if t12630161hval_serializer.is_valid():
+            t12630161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v12630161hval=V12630161hvals.objects.get(id_caudal_ins_hor_val=id)
-        v12630161hval.delete()
+        t12630161hval=T12630161hvals.objects.get(id_caudal_ins_hor_val=id)
+        t12630161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False) 
 
 
-class V1263021hsApi(View):
+class T1263021hsView(View):
       
     def post(self,request):
          
-         v1263021h_data=JSONParser().parse(request)
-         v1263021h_serializer=V1263021hSerializer(data=v1263021h_data)
-         if v1263021h_serializer.is_valid():
-             v1263021h_serializer.save()
+         t1263021h_data=JSONParser().parse(request)
+         t1263021h_serializer=T1263021hSerializer(data=t1263021h_data)
+         if t1263021h_serializer.is_valid():
+             t1263021h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1263021hs = V1263021hs.objects.all()
-         v1263021h_serializer=V1263021hSerializer(v1263021hs,many=True)
-         return JsonResponse(v1263021h_serializer.data,safe=False)
+         t1263021hs = T1263021hs.objects.all()
+         t1263021h_serializer=T1263021hSerializer(t1263021hs,many=True)
+         return JsonResponse(t1263021h_serializer.data,safe=False)
 
     def put(self,request):
-         v1263021h_data=JSONParser().parse(request)
-         v1263021h=V1263021hs.objects.get(id_caudal_min_hor=v1263021h_data['id_caudal_min_hor'])
-         v1263021h_serializer=V1073161hSerializer(v1263021h,data=v1263021h_data)
-         if v1263021h_serializer.is_valid():
-            v1263021h_serializer.save()
+         t1263021h_data=JSONParser().parse(request)
+         t1263021h=T1263021hs.objects.get(id_caudal_min_hor=t1263021h_data['id_caudal_min_hor'])
+         t1263021h_serializer=T1073161hSerializer(t1263021h,data=t1263021h_data)
+         if t1263021h_serializer.is_valid():
+            t1263021h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1263021h=V1263021hs.objects.get(id_caudal_min_hor=id)
-        v1263021h.delete()
+        t1263021h=T1263021hs.objects.get(id_caudal_min_hor=id)
+        t1263021h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
 
-class V1263021hvalsApi(View):
+class T1263021hvalsView(View):
       
     def post(self,request):
          
-         v1263021hval_data=JSONParser().parse(request)
-         v1263021hval_serializer=V1263021hvalSerializer(data=v1263021hval_data)
-         if v1263021hval_serializer.is_valid():
-             v1263021hval_serializer.save()
+         t1263021hval_data=JSONParser().parse(request)
+         t1263021hval_serializer=T1263021hvalSerializer(data=t1263021hval_data)
+         if t1263021hval_serializer.is_valid():
+             t1263021hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1263021hvals = V1263021hvals.objects.all()
-         v1263021hval_serializer=V1263021hvalSerializer(v1263021hvals,many=True)
-         return JsonResponse(v1263021hval_serializer.data,safe=False)
+         t1263021hvals = T1263021hvals.objects.all()
+         t1263021hval_serializer=T1263021hvalSerializer(t1263021hvals,many=True)
+         return JsonResponse(t1263021hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1263021hval_data=JSONParser().parse(request)
-         v1263021hval=V1263021hvals.objects.get(id_caudal_min_hor_val=v1263021hval_data['id_caudal_min_hor_val'])
-         v1263021hval_serializer=V1073161hSerializer(v1263021hval,data=v1263021hval_data)
-         if v1263021hval_serializer.is_valid():
-            v1263021hval_serializer.save()
+         t1263021hval_data=JSONParser().parse(request)
+         t1263021hval=T1263021hvals.objects.get(id_caudal_min_hor_val=t1263021hval_data['id_caudal_min_hor_val'])
+         t1263021hval_serializer=T1073161hSerializer(t1263021hval,data=t1263021hval_data)
+         if t1263021hval_serializer.is_valid():
+            t1263021hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1263021hval=V1263021hvals.objects.get(id_caudal_min_hor_val=id)
-        v1263021hval.delete()
+        t1263021hval=T1263021hvals.objects.get(id_caudal_min_hor_val=id)
+        t1263021hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V1263041hsApi(View):
+class T1263041hsView(View):
       
     def post(self,request):
          
-         v1263041h_data=JSONParser().parse(request)
-         v1263041h_serializer=V1263041hSerializer(data=v1263041h_data)
-         if v1263041h_serializer.is_valid():
-             v1263041h_serializer.save()
+         t1263041h_data=JSONParser().parse(request)
+         t1263041h_serializer=T1263041hSerializer(data=t1263041h_data)
+         if t1263041h_serializer.is_valid():
+             t1263041h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1263041hs = V1263041hs.objects.all()
-         v1263041h_serializer=V1263041hSerializer(v1263041hs,many=True)
-         return JsonResponse(v1263041h_serializer.data,safe=False)
+         t1263041hs = T1263041hs.objects.all()
+         t1263041h_serializer=T1263041hSerializer(t1263041hs,many=True)
+         return JsonResponse(t1263041h_serializer.data,safe=False)
 
     def put(self,request):
-         v1263041h_data=JSONParser().parse(request)
-         v1263041h=V1263041hs.objects.get(id_caudal_prom_hor=v1263041h_data['id_caudal_prom_hor'])
-         v1263041h_serializer=V1073161hSerializer(v1263041h,data=v1263041h_data)
-         if v1263041h_serializer.is_valid():
-            v1263041h_serializer.save()
+         t1263041h_data=JSONParser().parse(request)
+         t1263041h=T1263041hs.objects.get(id_caudal_prom_hor=t1263041h_data['id_caudal_prom_hor'])
+         t1263041h_serializer=T1073161hSerializer(t1263041h,data=t1263041h_data)
+         if t1263041h_serializer.is_valid():
+            t1263041h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1263041h=V1263041hs.objects.get(id_caudal_prom_hor=id)
-        v1263041h.delete()
+        t1263041h=T1263041hs.objects.get(id_caudal_prom_hor=id)
+        t1263041h.delete()
         return JsonResponse("Deleted Successfully",safe=False)
 
 
-class V1263041hvalsApi(View):
+class T1263041hvalsView(View):
       
     def post(self,request):
          
-         v1263041hval_data=JSONParser().parse(request)
-         v1263041hval_serializer=V1263041hvalSerializer(data=v1263041hval_data)
-         if v1263041hval_serializer.is_valid():
-             v1263041hval_serializer.save()
+         t1263041hval_data=JSONParser().parse(request)
+         t1263041hval_serializer=T1263041hvalSerializer(data=t1263041hval_data)
+         if t1263041hval_serializer.is_valid():
+             t1263041hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1263041hvals = V1263041hvals.objects.all()
-         v1263041hval_serializer=V1263041hvalSerializer(v1263041hvals,many=True)
-         return JsonResponse(v1263041hval_serializer.data,safe=False)
+         t1263041hvals = T1263041hvals.objects.all()
+         t1263041hval_serializer=T1263041hvalSerializer(t1263041hvals,many=True)
+         return JsonResponse(t1263041hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1263041hval_data=JSONParser().parse(request)
-         v1263041hval=V1263041hvals.objects.get(id_caudal_prom_hor_val=v1263041hval_data['id_caudal_prom_hor_val'])
-         v1263041hval_serializer=V1073161hSerializer(v1263041hval,data=v1263041hval_data)
-         if v1263041hval_serializer.is_valid():
-            v1263041hval_serializer.save()
+         t1263041hval_data=JSONParser().parse(request)
+         t1263041hval=T1263041hvals.objects.get(id_caudal_prom_hor_val=t1263041hval_data['id_caudal_prom_hor_val'])
+         t1263041hval_serializer=T1073161hSerializer(t1263041hval,data=t1263041hval_data)
+         if t1263041hval_serializer.is_valid():
+            t1263041hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1263041hval=V1263041hvals.objects.get(id_caudal_prom_hor_val=id)
-        v1263041hval.delete()
+        t1263041hval=T1263041hvals.objects.get(id_caudal_prom_hor_val=id)
+        t1263041hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
 
-class V141011hsApi(View):
+class T141011hsView(View):
       
     def post(self,request):
          
-         v141011h_data=JSONParser().parse(request)
-         v141011h_serializer=V141011hSerializer(data=v141011h_data)
-         if v141011h_serializer.is_valid():
-             v141011h_serializer.save()
+         t141011h_data=JSONParser().parse(request)
+         t141011h_serializer=T141011hSerializer(data=t141011h_data)
+         if t141011h_serializer.is_valid():
+             t141011h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v141011hs = V141011hs.objects.all()
-         v141011h_serializer=V141011hSerializer(v141011hs,many=True)
-         return JsonResponse(v141011h_serializer.data,safe=False)
+         t141011hs = T141011hs.objects.all()
+         t141011h_serializer=T141011hSerializer(t141011hs,many=True)
+         return JsonResponse(t141011h_serializer.data,safe=False)
 
     def put(self,request):
-         v141011h_data=JSONParser().parse(request)
-         v141011h=V141011hs.objects.get(id_nivelagua_max_hor=v141011h_data['id_nivelagua_max_hor'])
-         v141011h_serializer=V1073161hSerializer(v141011h,data=v141011h_data)
-         if v141011h_serializer.is_valid():
-            v141011h_serializer.save()
+         t141011h_data=JSONParser().parse(request)
+         t141011h=T141011hs.objects.get(id_nitelagua_max_hor=t141011h_data['id_nitelagua_max_hor'])
+         t141011h_serializer=T1073161hSerializer(t141011h,data=t141011h_data)
+         if t141011h_serializer.is_valid():
+            t141011h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v141011h=V141011hs.objects.get(id_nivelagua_max_hor=id)
-        v141011h.delete()
+        t141011h=T141011hs.objects.get(id_nitelagua_max_hor=id)
+        t141011h.delete()
         return JsonResponse("Deleted Successfully",safe=False)          
 
 
 
 
-class V141011hvalsApi(View):
+class T141011hvalsView(View):
       
     def post(self,request):
          
-         v141011hval_data=JSONParser().parse(request)
-         v141011hval_serializer=V141011hvalSerializer(data=v141011hval_data)
-         if v141011hval_serializer.is_valid():
-             v141011hval_serializer.save()
+         t141011hval_data=JSONParser().parse(request)
+         t141011hval_serializer=T141011hvalSerializer(data=t141011hval_data)
+         if t141011hval_serializer.is_valid():
+             t141011hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v141011hvals = V141011hvals.objects.all()
-         v141011hval_serializer=V141011hvalSerializer(v141011hvals,many=True)
-         return JsonResponse(v141011hval_serializer.data,safe=False)
+         t141011hvals = T141011hvals.objects.all()
+         t141011hval_serializer=T141011hvalSerializer(t141011hvals,many=True)
+         return JsonResponse(t141011hval_serializer.data,safe=False)
 
     def put(self,request):
-         v141011hval_data=JSONParser().parse(request)
-         v141011hval=V141011hvals.objects.get(id_nivelagua_max_hor_val=v141011hval_data['id_nivelagua_max_hor_val'])
-         v141011hval_serializer=V1073161hSerializer(v141011hval,data=v141011hval_data)
-         if v141011hval_serializer.is_valid():
-            v141011hval_serializer.save()
+         t141011hval_data=JSONParser().parse(request)
+         t141011hval=T141011hvals.objects.get(id_nitelagua_max_hor_val=t141011hval_data['id_nitelagua_max_hor_val'])
+         t141011hval_serializer=T1073161hSerializer(t141011hval,data=t141011hval_data)
+         if t141011hval_serializer.is_valid():
+            t141011hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v141011hval=V141011hvals.objects.get(id_nivelagua_max_hor_val=id)
-        v141011hval.delete()
+        t141011hval=T141011hvals.objects.get(id_nitelagua_max_hor_val=id)
+        t141011hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V1410161hsApi(View):
+class T1410161hsView(View):
       
     def post(self,request):
          
-         v1410161h_data=JSONParser().parse(request)
-         v1410161h_serializer=V1410161hSerializer(data=v1410161h_data)
-         if v1410161h_serializer.is_valid():
-             v1410161h_serializer.save()
+         t1410161h_data=JSONParser().parse(request)
+         t1410161h_serializer=T1410161hSerializer(data=t1410161h_data)
+         if t1410161h_serializer.is_valid():
+             t1410161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1410161hs = V1410161hs.objects.all()
-         v1410161h_serializer=V1410161hSerializer(v1410161hs,many=True)
-         return JsonResponse(v1410161h_serializer.data,safe=False)
+         t1410161hs = T1410161hs.objects.all()
+         t1410161h_serializer=T1410161hSerializer(t1410161hs,many=True)
+         return JsonResponse(t1410161h_serializer.data,safe=False)
 
     def put(self,request):
-         v1410161h_data=JSONParser().parse(request)
-         v1410161h=V1410161hs.objects.get(id_nivelagua_ins_hor=v1410161h_data['id_nivelagua_ins_hor'])
-         v1410161h_serializer=V1073161hSerializer(v1410161h,data=v1410161h_data)
-         if v1410161h_serializer.is_valid():
-            v1410161h_serializer.save()
+         t1410161h_data=JSONParser().parse(request)
+         t1410161h=T1410161hs.objects.get(id_nitelagua_ins_hor=t1410161h_data['id_nitelagua_ins_hor'])
+         t1410161h_serializer=T1073161hSerializer(t1410161h,data=t1410161h_data)
+         if t1410161h_serializer.is_valid():
+            t1410161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1410161h=V1410161hs.objects.get(id_nivelagua_ins_hor=id)
-        v1410161h.delete()
+        t1410161h=T1410161hs.objects.get(id_nitelagua_ins_hor=id)
+        t1410161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V1410161hvalsApi(View):
+class T1410161hvalsView(View):
       
     def post(self,request):
          
-         v1410161hval_data=JSONParser().parse(request)
-         v1410161hval_serializer=V1410161hvalSerializer(data=v1410161hval_data)
-         if v1410161hval_serializer.is_valid():
-             v1410161hval_serializer.save()
+         t1410161hval_data=JSONParser().parse(request)
+         t1410161hval_serializer=T1410161hvalSerializer(data=t1410161hval_data)
+         if t1410161hval_serializer.is_valid():
+             t1410161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1410161hvals = V1410161hvals.objects.all()
-         v1410161hval_serializer=V1410161hvalSerializer(v1410161hvals,many=True)
-         return JsonResponse(v1410161hval_serializer.data,safe=False)
+         t1410161hvals = T1410161hvals.objects.all()
+         t1410161hval_serializer=T1410161hvalSerializer(t1410161hvals,many=True)
+         return JsonResponse(t1410161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1410161hval_data=JSONParser().parse(request)
-         v1410161hval=V1410161hvals.objects.get(id_nivelagua_ins_hor_val=v1410161hval_data['id_nivelagua_ins_hor_val'])
-         v1410161hval_serializer=V1073161hSerializer(v1410161hval,data=v1410161hval_data)
-         if v1410161hval_serializer.is_valid():
-            v1410161hval_serializer.save()
+         t1410161hval_data=JSONParser().parse(request)
+         t1410161hval=T1410161hvals.objects.get(id_nitelagua_ins_hor_val=t1410161hval_data['id_nitelagua_ins_hor_val'])
+         t1410161hval_serializer=T1073161hSerializer(t1410161hval,data=t1410161hval_data)
+         if t1410161hval_serializer.is_valid():
+            t1410161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1410161hval=V1410161hvals.objects.get(id_nivelagua_ins_hor_val=id)
-        v1410161hval.delete()
+        t1410161hval=T1410161hvals.objects.get(id_nitelagua_ins_hor_val=id)
+        t1410161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V141021hsApi(View):
+class T141021hsView(View):
       
     def post(self,request):
          
-         v141021h_data=JSONParser().parse(request)
-         v141021h_serializer=V141021hSerializer(data=v141021h_data)
-         if v141021h_serializer.is_valid():
-             v141021h_serializer.save()
+         t141021h_data=JSONParser().parse(request)
+         t141021h_serializer=T141021hSerializer(data=t141021h_data)
+         if t141021h_serializer.is_valid():
+             t141021h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v141021hs = V141021hs.objects.all()
-         v141021h_serializer=V141021hSerializer(v141021hs,many=True)
-         return JsonResponse(v141021h_serializer.data,safe=False)
+         t141021hs = T141021hs.objects.all()
+         t141021h_serializer=T141021hSerializer(t141021hs,many=True)
+         return JsonResponse(t141021h_serializer.data,safe=False)
 
     def put(self,request):
-         v141021h_data=JSONParser().parse(request)
-         v141021h=V141021hs.objects.get(id_nivelagua_min_hor=v141021h_data['id_nivelagua_min_hor'])
-         v141021h_serializer=V1073161hSerializer(v141021h,data=v141021h_data)
-         if v141021h_serializer.is_valid():
-            v141021h_serializer.save()
+         t141021h_data=JSONParser().parse(request)
+         t141021h=T141021hs.objects.get(id_nitelagua_min_hor=t141021h_data['id_nitelagua_min_hor'])
+         t141021h_serializer=T1073161hSerializer(t141021h,data=t141021h_data)
+         if t141021h_serializer.is_valid():
+            t141021h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v141021h=V141021hs.objects.get(id_nivelagua_min_hor=id)
-        v141021h.delete()
+        t141021h=T141021hs.objects.get(id_nitelagua_min_hor=id)
+        t141021h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V141021hvalsApi(View):
+class T141021hvalsView(View):
       
     def post(self,request):
          
-         v141021hval_data=JSONParser().parse(request)
-         v141021hval_serializer=V141021hvalSerializer(data=v141021hval_data)
-         if v141021hval_serializer.is_valid():
-             v141021hval_serializer.save()
+         t141021hval_data=JSONParser().parse(request)
+         t141021hval_serializer=T141021hvalSerializer(data=t141021hval_data)
+         if t141021hval_serializer.is_valid():
+             t141021hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v141021hvals = V141021hvals.objects.all()
-         v141021hval_serializer=V141021hvalSerializer(v141021hvals,many=True)
-         return JsonResponse(v141021hval_serializer.data,safe=False)
+         t141021hvals = T141021hvals.objects.all()
+         t141021hval_serializer=T141021hvalSerializer(t141021hvals,many=True)
+         return JsonResponse(t141021hval_serializer.data,safe=False)
 
     def put(self,request):
-         v141021hval_data=JSONParser().parse(request)
-         v141021hval=V141021hvals.objects.get(id_nivelagua_min_hor_val=v141021hval_data['id_nivelagua_min_hor_val'])
-         v141021hval_serializer=V1073161hSerializer(v141021hval,data=v141021hval_data)
-         if v141021hval_serializer.is_valid():
-            v141021hval_serializer.save()
+         t141021hval_data=JSONParser().parse(request)
+         t141021hval=T141021hvals.objects.get(id_nitelagua_min_hor_val=t141021hval_data['id_nitelagua_min_hor_val'])
+         t141021hval_serializer=T1073161hSerializer(t141021hval,data=t141021hval_data)
+         if t141021hval_serializer.is_valid():
+            t141021hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v141021hval=V141021hvals.objects.get(id_nivelagua_min_hor_val=id)
-        v141021hval.delete()
+        t141021hval=T141021hvals.objects.get(id_nitelagua_min_hor_val=id)
+        t141021hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
 
-class V141041hsApi(View):
+class T141041hsView(View):
       
     def post(self,request):
          
-         v141041h_data=JSONParser().parse(request)
-         v141041h_serializer=V141041hSerializer(data=v141041h_data)
-         if v141041h_serializer.is_valid():
-             v141041h_serializer.save()
+         t141041h_data=JSONParser().parse(request)
+         t141041h_serializer=T141041hSerializer(data=t141041h_data)
+         if t141041h_serializer.is_valid():
+             t141041h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v141041hs = V141041hs.objects.all()
-         v141041h_serializer=V141041hSerializer(v141041hs,many=True)
-         return JsonResponse(v141041h_serializer.data,safe=False)
+         t141041hs = T141041hs.objects.all()
+         t141041h_serializer=T141041hSerializer(t141041hs,many=True)
+         return JsonResponse(t141041h_serializer.data,safe=False)
 
     def put(self,request):
-         v141041h_data=JSONParser().parse(request)
-         v141041h=V141041hs.objects.get(id_nivelagua_prom_hor=v141041h_data['id_nivelagua_prom_hor'])
-         v141041h_serializer=V1073161hSerializer(v141041h,data=v141041h_data)
-         if v141041h_serializer.is_valid():
-            v141041h_serializer.save()
+         t141041h_data=JSONParser().parse(request)
+         t141041h=T141041hs.objects.get(id_nitelagua_prom_hor=t141041h_data['id_nitelagua_prom_hor'])
+         t141041h_serializer=T1073161hSerializer(t141041h,data=t141041h_data)
+         if t141041h_serializer.is_valid():
+            t141041h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v141041h=V141041hs.objects.get(id_nivelagua_prom_hor=id)
-        v141041h.delete()
+        t141041h=T141041hs.objects.get(id_nitelagua_prom_hor=id)
+        t141041h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
-class V141041hvalsApi(View):
+class T141041hvalsView(View):
       
     def post(self,request):
          
-         v141041hval_data=JSONParser().parse(request)
-         v141041hval_serializer=V141041hvalSerializer(data=v141041hval_data)
-         if v141041hval_serializer.is_valid():
-             v141041hval_serializer.save()
+         t141041hval_data=JSONParser().parse(request)
+         t141041hval_serializer=T141041hvalSerializer(data=t141041hval_data)
+         if t141041hval_serializer.is_valid():
+             t141041hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v141041hvals = V141041hvals.objects.all()
-         v141041hval_serializer=V141041hvalSerializer(v141041hvals,many=True)
-         return JsonResponse(v141041hval_serializer.data,safe=False)
+         t141041hvals = T141041hvals.objects.all()
+         t141041hval_serializer=T141041hvalSerializer(t141041hvals,many=True)
+         return JsonResponse(t141041hval_serializer.data,safe=False)
 
     def put(self,request):
-         v141041hval_data=JSONParser().parse(request)
-         v141041hval=V141041hvals.objects.get(id_nivelagua_prom_hor_val=v141041hval_data['id_nivelagua_prom_hor_val'])
-         v141041hval_serializer=V1073161hSerializer(v141041hval,data=v141041hval_data)
-         if v141041hval_serializer.is_valid():
-            v141041hval_serializer.save()
+         t141041hval_data=JSONParser().parse(request)
+         t141041hval=T141041hvals.objects.get(id_nitelagua_prom_hor_val=t141041hval_data['id_nitelagua_prom_hor_val'])
+         t141041hval_serializer=T1073161hSerializer(t141041hval,data=t141041hval_data)
+         if t141041hval_serializer.is_valid():
+            t141041hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v141041hval=V141041hvals.objects.get(id_nivelagua_prom_hor_val=id)
-        v141041hval.delete()
+        t141041hval=T141041hvals.objects.get(id_nitelagua_prom_hor_val=id)
+        t141041hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)   
 
 
-class V1714161hsApi(View):
+class T1714161hsView(View):
       
     def post(self,request):
          
-         v1714161h_data=JSONParser().parse(request)
-         v1714161h_serializer=V1714161hSerializer(data=v1714161h_data)
-         if v1714161h_serializer.is_valid():
-             v1714161h_serializer.save()
+         t1714161h_data=JSONParser().parse(request)
+         t1714161h_serializer=T1714161hSerializer(data=t1714161h_data)
+         if t1714161h_serializer.is_valid():
+             t1714161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1714161hs = V1714161hs.objects.all()
-         v1714161h_serializer=V1714161hSerializer(v1714161hs,many=True)
-         return JsonResponse(v1714161h_serializer.data,safe=False)
+         t1714161hs = T1714161hs.objects.all()
+         t1714161h_serializer=T1714161hSerializer(t1714161hs,many=True)
+         return JsonResponse(t1714161h_serializer.data,safe=False)
 
     def put(self,request):
-         v1714161h_data=JSONParser().parse(request)
-         v1714161h=V1714161hs.objects.get(id_prec_1h=v1714161h_data['id_prec_1h'])
-         v1714161h_serializer=V1073161hSerializer(v1714161h,data=v1714161h_data)
-         if v1714161h_serializer.is_valid():
-            v1714161h_serializer.save()
+         t1714161h_data=JSONParser().parse(request)
+         t1714161h=T1714161hs.objects.get(id_prec_1h=t1714161h_data['id_prec_1h'])
+         t1714161h_serializer=T1073161hSerializer(t1714161h,data=t1714161h_data)
+         if t1714161h_serializer.is_valid():
+            t1714161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1714161h=V1714161hs.objects.get(id_prec_1h=id)
-        v1714161h.delete()
+        t1714161h=T1714161hs.objects.get(id_prec_1h=id)
+        t1714161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)       
 
 
-class V1714161hvalsApi(View):
+class T1714161hvalsView(View):
       
     def post(self,request):
          
-         v1714161hval_data=JSONParser().parse(request)
-         v1714161hval_serializer=V1714161hvalSerializer(data=v1714161hval_data)
-         if v1714161hval_serializer.is_valid():
-             v1714161hval_serializer.save()
+         t1714161hval_data=JSONParser().parse(request)
+         t1714161hval_serializer=T1714161hvalSerializer(data=t1714161hval_data)
+         if t1714161hval_serializer.is_valid():
+             t1714161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v1714161hvals = V1714161hvals.objects.all()
-         v1714161hval_serializer=V1714161hvalSerializer(v1714161hvals,many=True)
-         return JsonResponse(v1714161hval_serializer.data,safe=False)
+         t1714161hvals = T1714161hvals.objects.all()
+         t1714161hval_serializer=T1714161hvalSerializer(t1714161hvals,many=True)
+         return JsonResponse(t1714161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v1714161hval_data=JSONParser().parse(request)
-         v1714161hval=V1714161hvals.objects.get(id_prec_1h_val=v1714161hval_data['id_prec_1h_val'])
-         v1714161hval_serializer=V1073161hSerializer(v1714161hval,data=v1714161hval_data)
-         if v1714161hval_serializer.is_valid():
-            v1714161hval_serializer.save()
+         t1714161hval_data=JSONParser().parse(request)
+         t1714161hval=T1714161hvals.objects.get(id_prec_1h_val=t1714161hval_data['id_prec_1h_val'])
+         t1714161hval_serializer=T1073161hSerializer(t1714161hval,data=t1714161hval_data)
+         if t1714161hval_serializer.is_valid():
+            t1714161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v1714161hval=V1714161hvals.objects.get(id_prec_1h_val=id)
-        v1714161hval.delete()
+        t1714161hval=T1714161hvals.objects.get(id_prec_1h_val=id)
+        t1714161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)   
 
 
-class V171481hsApi(View):
+class T171481hsView(View):
       
     def post(self,request):
          
-         v171481h_data=JSONParser().parse(request)
-         v171481h_serializer=V171481hSerializer(data=v171481h_data)
-         if v171481h_serializer.is_valid():
-             v171481h_serializer.save()
+         t171481h_data=JSONParser().parse(request)
+         t171481h_serializer=T171481hSerializer(data=t171481h_data)
+         if t171481h_serializer.is_valid():
+             t171481h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v171481hs = V171481hs.objects.all()
-         v171481h_serializer=V171481hSerializer(v171481hs,many=True)
-         return JsonResponse(v171481h_serializer.data,safe=False)
+         t171481hs = T171481hs.objects.all()
+         t171481h_serializer=T171481hSerializer(t171481hs,many=True)
+         return JsonResponse(t171481h_serializer.data,safe=False)
 
     def put(self,request):
-         v171481h_data=JSONParser().parse(request)
-         v171481h=V171481hs.objects.get(id_prec=v171481h_data['id_prec'])
-         v171481h_serializer=V1073161hSerializer(v171481h,data=v171481h_data)
-         if v171481h_serializer.is_valid():
-            v171481h_serializer.save()
+         t171481h_data=JSONParser().parse(request)
+         t171481h=T171481hs.objects.get(id_prec=t171481h_data['id_prec'])
+         t171481h_serializer=T1073161hSerializer(t171481h,data=t171481h_data)
+         if t171481h_serializer.is_valid():
+            t171481h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v171481h=V171481hs.objects.get(id_prec=id)
-        v171481h.delete()
+        t171481h=T171481hs.objects.get(id_prec=id)
+        t171481h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V171481hvalsApi(View):
+class T171481hvalsView(View):
       
     def post(self,request):
          
-         v171481hval_data=JSONParser().parse(request)
-         v171481hval_serializer=V171481hvalSerializer(data=v171481hval_data)
-         if v171481hval_serializer.is_valid():
-             v171481hval_serializer.save()
+         t171481hval_data=JSONParser().parse(request)
+         t171481hval_serializer=T171481hvalSerializer(data=t171481hval_data)
+         if t171481hval_serializer.is_valid():
+             t171481hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v171481hvals = V171481hvals.objects.all()
-         v171481hval_serializer=V171481hvalSerializer(v171481hvals,many=True)
-         return JsonResponse(v171481hval_serializer.data,safe=False)
+         t171481hvals = T171481hvals.objects.all()
+         t171481hval_serializer=T171481hvalSerializer(t171481hvals,many=True)
+         return JsonResponse(t171481hval_serializer.data,safe=False)
 
     def put(self,request):
-         v171481hval_data=JSONParser().parse(request)
-         v171481hval=V171481hvals.objects.get(id_prec_val=v171481hval_data['id_prec_val'])
-         v171481hval_serializer=V1073161hSerializer(v171481hval,data=v171481hval_data)
-         if v171481hval_serializer.is_valid():
-            v171481hval_serializer.save()
+         t171481hval_data=JSONParser().parse(request)
+         t171481hval=T171481hvals.objects.get(id_prec_val=t171481hval_data['id_prec_val'])
+         t171481hval_serializer=T1073161hSerializer(t171481hval,data=t171481hval_data)
+         if t171481hval_serializer.is_valid():
+            t171481hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v171481hval=V171481hvals.objects.get(id_prec_val=id)
-        v171481hval.delete()
+        t171481hval=T171481hvals.objects.get(id_prec_val=id)
+        t171481hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V187161hsApi(View):
+class T187161hsView(View):
       
     def post(self,request):
          
-         v187161h_data=JSONParser().parse(request)
-         v187161h_serializer=V187161hSerializer(data=v187161h_data)
-         if v187161h_serializer.is_valid():
-             v187161h_serializer.save()
+         t187161h_data=JSONParser().parse(request)
+         t187161h_serializer=T187161hSerializer(data=t187161h_data)
+         if t187161h_serializer.is_valid():
+             t187161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v187161hs = V187161hs.objects.all()
-         v187161h_serializer=V187161hSerializer(v187161hs,many=True)
-         return JsonResponse(v187161h_serializer.data,safe=False)
+         t187161hs = T187161hs.objects.all()
+         t187161h_serializer=T187161hSerializer(t187161hs,many=True)
+         return JsonResponse(t187161h_serializer.data,safe=False)
 
     def put(self,request):
-         v187161h_data=JSONParser().parse(request)
-         v187161h=V187161hs.objects.get(id_presion=v187161h_data['id_presion'])
-         v187161h_serializer=V1073161hSerializer(v187161h,data=v187161h_data)
-         if v187161h_serializer.is_valid():
-            v187161h_serializer.save()
+         t187161h_data=JSONParser().parse(request)
+         t187161h=T187161hs.objects.get(id_presion=t187161h_data['id_presion'])
+         t187161h_serializer=T1073161hSerializer(t187161h,data=t187161h_data)
+         if t187161h_serializer.is_valid():
+            t187161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v187161h=V187161hs.objects.get(id_presion=id)
-        v187161h.delete()
+        t187161h=T187161hs.objects.get(id_presion=id)
+        t187161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V187161hvalsApi(View):
+class T187161hvalsView(View):
       
     def post(self,request):
          
-         v187161hval_data=JSONParser().parse(request)
-         v187161hval_serializer=V187161hvalSerializer(data=v187161hval_data)
-         if v187161hval_serializer.is_valid():
-             v187161hval_serializer.save()
+         t187161hval_data=JSONParser().parse(request)
+         t187161hval_serializer=T187161hvalSerializer(data=t187161hval_data)
+         if t187161hval_serializer.is_valid():
+             t187161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v187161hvals = V187161hvals.objects.all()
-         v187161hval_serializer=V187161hvalSerializer(v187161hvals,many=True)
-         return JsonResponse(v187161hval_serializer.data,safe=False)
+         t187161hvals = T187161hvals.objects.all()
+         t187161hval_serializer=T187161hvalSerializer(t187161hvals,many=True)
+         return JsonResponse(t187161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v187161hval_data=JSONParser().parse(request)
-         v187161hval=V187161hvals.objects.get(id_presion_val=v187161hval_data['id_presion_val'])
-         v187161hval_serializer=V1073161hSerializer(v187161hval,data=v187161hval_data)
-         if v187161hval_serializer.is_valid():
-            v187161hval_serializer.save()
+         t187161hval_data=JSONParser().parse(request)
+         t187161hval=T187161hvals.objects.get(id_presion_val=t187161hval_data['id_presion_val'])
+         t187161hval_serializer=T1073161hSerializer(t187161hval,data=t187161hval_data)
+         if t187161hval_serializer.is_valid():
+            t187161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v187161hval=V187161hvals.objects.get(id_presion_val=id)
-        v187161hval.delete()
+        t187161hval=T187161hvals.objects.get(id_presion_val=id)
+        t187161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)       
 
-class V272981hsApi(View):
+class T272981hsView(View):
       
     def post(self,request):
          
-         v272981h_data=JSONParser().parse(request)
-         v272981h_serializer=V272981hSerializer(data=v272981h_data)
-         if v272981h_serializer.is_valid():
-             v272981h_serializer.save()
+         t272981h_data=JSONParser().parse(request)
+         t272981h_serializer=T272981hSerializer(data=t272981h_data)
+         if t272981h_serializer.is_valid():
+             t272981h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v272981hs = V272981hs.objects.all()
-         v272981h_serializer=V272981hSerializer(v272981hs,many=True)
-         return JsonResponse(v272981h_serializer.data,safe=False)
+         t272981hs = T272981hs.objects.all()
+         t272981h_serializer=T272981hSerializer(t272981hs,many=True)
+         return JsonResponse(t272981h_serializer.data,safe=False)
 
     def put(self,request):
-         v272981h_data=JSONParser().parse(request)
-         v272981h=V272981hs.objects.get(id_viento_rec=v272981h_data['id_viento_rec'])
-         v272981h_serializer=V1073161hSerializer(v272981h,data=v272981h_data)
-         if v272981h_serializer.is_valid():
-            v272981h_serializer.save()
+         t272981h_data=JSONParser().parse(request)
+         t272981h=T272981hs.objects.get(id_tiento_rec=t272981h_data['id_tiento_rec'])
+         t272981h_serializer=T1073161hSerializer(t272981h,data=t272981h_data)
+         if t272981h_serializer.is_valid():
+            t272981h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v272981h=V272981hs.objects.get(id_viento_rec=id)
-        v272981h.delete()
+        t272981h=T272981hs.objects.get(id_tiento_rec=id)
+        t272981h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V272981hvalsApi(View):
+class T272981hvalsView(View):
       
     def post(self,request):
          
-         v272981hval_data=JSONParser().parse(request)
-         v272981hval_serializer=V272981hvalSerializer(data=v272981hval_data)
-         if v272981hval_serializer.is_valid():
-             v272981hval_serializer.save()
+         t272981hval_data=JSONParser().parse(request)
+         t272981hval_serializer=T272981hvalSerializer(data=t272981hval_data)
+         if t272981hval_serializer.is_valid():
+             t272981hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v272981hvals = V272981hvals.objects.all()
-         v272981hval_serializer=V272981hvalSerializer(v272981hvals,many=True)
-         return JsonResponse(v272981hval_serializer.data,safe=False)
+         t272981hvals = T272981hvals.objects.all()
+         t272981hval_serializer=T272981hvalSerializer(t272981hvals,many=True)
+         return JsonResponse(t272981hval_serializer.data,safe=False)
 
     def put(self,request):
-         v272981hval_data=JSONParser().parse(request)
-         v272981hval=V272981hvals.objects.get(id_viento_rec_val=v272981hval_data['id_viento_rec_val'])
-         v272981hval_serializer=V1073161hSerializer(v272981hval,data=v272981hval_data)
-         if v272981hval_serializer.is_valid():
-            v272981hval_serializer.save()
+         t272981hval_data=JSONParser().parse(request)
+         t272981hval=T272981hvals.objects.get(id_tiento_rec_val=t272981hval_data['id_tiento_rec_val'])
+         t272981hval_serializer=T1073161hSerializer(t272981hval,data=t272981hval_data)
+         if t272981hval_serializer.is_valid():
+            t272981hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v272981hval=V272981hvals.objects.get(id_viento_rec_val=id)
-        v272981hval.delete()
+        t272981hval=T272981hvals.objects.get(id_tiento_rec_val=id)
+        t272981hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V29311hsApi(View):
+class T29311hsView(View):
       
     def post(self,request):
          
-         v29311h_data=JSONParser().parse(request)
-         v29311h_serializer=V29311hSerializer(data=v29311h_data)
-         if v29311h_serializer.is_valid():
-             v29311h_serializer.save()
+         t29311h_data=JSONParser().parse(request)
+         t29311h_serializer=T29311hSerializer(data=t29311h_data)
+         if t29311h_serializer.is_valid():
+             t29311h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v29311hs = V29311hs.objects.all()
-         v29311h_serializer=V29311hSerializer(v29311hs,many=True)
-         return JsonResponse(v29311h_serializer.data,safe=False)
+         t29311hs = T29311hs.objects.all()
+         t29311h_serializer=T29311hSerializer(t29311hs,many=True)
+         return JsonResponse(t29311h_serializer.data,safe=False)
 
     def put(self,request):
-         v29311h_data=JSONParser().parse(request)
-         v29311h=V29311hs.objects.get(id_temp_aire_max=v29311h_data['id_temp_aire_max'])
-         v29311h_serializer=V1073161hSerializer(v29311h,data=v29311h_data)
-         if v29311h_serializer.is_valid():
-            v29311h_serializer.save()
+         t29311h_data=JSONParser().parse(request)
+         t29311h=T29311hs.objects.get(id_temp_aire_max=t29311h_data['id_temp_aire_max'])
+         t29311h_serializer=T1073161hSerializer(t29311h,data=t29311h_data)
+         if t29311h_serializer.is_valid():
+            t29311h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v29311h=V29311hs.objects.get(id_temp_aire_max=id)
-        v29311h.delete()
+        t29311h=T29311hs.objects.get(id_temp_aire_max=id)
+        t29311h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V29311hvalsApi(View):
+class T29311hvalsView(View):
       
     def post(self,request):
          
-         v29311hval_data=JSONParser().parse(request)
-         v29311hval_serializer=V29311hvalSerializer(data=v29311hval_data)
-         if v29311hval_serializer.is_valid():
-             v29311hval_serializer.save()
+         t29311hval_data=JSONParser().parse(request)
+         t29311hval_serializer=T29311hvalSerializer(data=t29311hval_data)
+         if t29311hval_serializer.is_valid():
+             t29311hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v29311hvals = V29311hvals.objects.all()
-         v29311hval_serializer=V29311hvalSerializer(v29311hvals,many=True)
-         return JsonResponse(v29311hval_serializer.data,safe=False)
+         t29311hvals = T29311hvals.objects.all()
+         t29311hval_serializer=T29311hvalSerializer(t29311hvals,many=True)
+         return JsonResponse(t29311hval_serializer.data,safe=False)
 
     def put(self,request):
-         v29311hval_data=JSONParser().parse(request)
-         v29311hval=V29311hvals.objects.get(id_temp_aire_max_val=v29311hval_data['id_temp_aire_max_val'])
-         v29311hval_serializer=V1073161hSerializer(v29311hval,data=v29311hval_data)
-         if v29311hval_serializer.is_valid():
-            v29311hval_serializer.save()
+         t29311hval_data=JSONParser().parse(request)
+         t29311hval=T29311hvals.objects.get(id_temp_aire_max_val=t29311hval_data['id_temp_aire_max_val'])
+         t29311hval_serializer=T1073161hSerializer(t29311hval,data=t29311hval_data)
+         if t29311hval_serializer.is_valid():
+            t29311hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v29311hval=V29311hvals.objects.get(id_temp_aire_max_val=id)
-        v29311hval.delete()
+        t29311hval=T29311hvals.objects.get(id_temp_aire_max_val=id)
+        t29311hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V29321hsApi(View):
+class T29321hsView(View):
       
     def post(self,request):
          
-         v29321h_data=JSONParser().parse(request)
-         v29321h_serializer=V29321hSerializer(data=v29321h_data)
-         if v29321h_serializer.is_valid():
-             v29321h_serializer.save()
+         t29321h_data=JSONParser().parse(request)
+         t29321h_serializer=T29321hSerializer(data=t29321h_data)
+         if t29321h_serializer.is_valid():
+             t29321h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v29321hs = V29321hs.objects.all()
-         v29321h_serializer=V29321hSerializer(v29321hs,many=True)
-         return JsonResponse(v29321h_serializer.data,safe=False)
+         t29321hs = T29321hs.objects.all()
+         t29321h_serializer=T29321hSerializer(t29321hs,many=True)
+         return JsonResponse(t29321h_serializer.data,safe=False)
 
     def put(self,request):
-         v29321h_data=JSONParser().parse(request)
-         v29321h=V29321hs.objects.get(id_temp_aire_min=v29321h_data['id_temp_aire_min'])
-         v29321h_serializer=V1073161hSerializer(v29321h,data=v29321h_data)
-         if v29321h_serializer.is_valid():
-            v29321h_serializer.save()
+         t29321h_data=JSONParser().parse(request)
+         t29321h=T29321hs.objects.get(id_temp_aire_min=t29321h_data['id_temp_aire_min'])
+         t29321h_serializer=T1073161hSerializer(t29321h,data=t29321h_data)
+         if t29321h_serializer.is_valid():
+            t29321h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v29321h=V29321hs.objects.get(id_temp_aire_min=id)
-        v29321h.delete()
+        t29321h=T29321hs.objects.get(id_temp_aire_min=id)
+        t29321h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
-class V29321hvalsApi(View):
+class T29321hvalsView(View):
       
     def post(self,request):
          
-         v29321hval_data=JSONParser().parse(request)
-         v29321hval_serializer=V29321hvalSerializer(data=v29321hval_data)
-         if v29321hval_serializer.is_valid():
-             v29321hval_serializer.save()
+         t29321hval_data=JSONParser().parse(request)
+         t29321hval_serializer=T29321hvalSerializer(data=t29321hval_data)
+         if t29321hval_serializer.is_valid():
+             t29321hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v29321hvals = V29321hvals.objects.all()
-         v29321hval_serializer=V29321hvalSerializer(v29321hvals,many=True)
-         return JsonResponse(v29321hval_serializer.data,safe=False)
+         t29321hvals = T29321hvals.objects.all()
+         t29321hval_serializer=T29321hvalSerializer(t29321hvals,many=True)
+         return JsonResponse(t29321hval_serializer.data,safe=False)
 
     def put(self,request):
-         v29321hval_data=JSONParser().parse(request)
-         v29321hval=V29321hvals.objects.get(id_temp_aire_min_val=v29321hval_data['id_temp_aire_min_val'])
-         v29321hval_serializer=V1073161hSerializer(v29321hval,data=v29321hval_data)
-         if v29321hval_serializer.is_valid():
-            v29321hval_serializer.save()
+         t29321hval_data=JSONParser().parse(request)
+         t29321hval=T29321hvals.objects.get(id_temp_aire_min_val=t29321hval_data['id_temp_aire_min_val'])
+         t29321hval_serializer=T1073161hSerializer(t29321hval,data=t29321hval_data)
+         if t29321hval_serializer.is_valid():
+            t29321hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v29321hval=V29321hvals.objects.get(id_temp_aire_min_val=id)
-        v29321hval.delete()
-        return JsonResponse("Deleted Successfully",safe=False)     
-
-
-class V303161hsApi(View):
-      
-    def post(self,request):
-         
-         v303161h_data=JSONParser().parse(request)
-         v303161h_serializer=V303161hSerializer(data=v303161h_data)
-         if v303161h_serializer.is_valid():
-             v303161h_serializer.save()
-             return JsonResponse('Se agrrego correctamente',safe=False)
-         return   JsonResponse('No se pudo agregar ',safe=False) 
-   
-    def get(self,request):
-         v303161hs = V303161hs.objects.all()
-         v303161h_serializer=V303161hSerializer(v303161hs,many=True)
-         return JsonResponse(v303161h_serializer.data,safe=False)
-
-    def put(self,request):
-         v303161h_data=JSONParser().parse(request)
-         v303161h=V303161hs.objects.get(id_temp_agua_mar=v303161h_data['id_temp_agua_mar'])
-         v303161h_serializer=V1073161hSerializer(v303161h,data=v303161h_data)
-         if v303161h_serializer.is_valid():
-            v303161h_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-         return JsonResponse("Failed to Update")
-
-    def delete(self,request,id):
-        v303161h=V303161hs.objects.get(id_temp_agua_mar=id)
-        v303161h.delete()
-        return JsonResponse("Deleted Successfully",safe=False)     
-
-class V303161hvalsApi(View):
-      
-    def post(self,request):
-         
-         v303161hval_data=JSONParser().parse(request)
-         v303161hval_serializer=V303161hvalSerializer(data=v303161hval_data)
-         if v303161hval_serializer.is_valid():
-             v303161hval_serializer.save()
-             return JsonResponse('Se agrrego correctamente',safe=False)
-         return   JsonResponse('No se pudo agregar ',safe=False) 
-   
-    def get(self,request):
-         v303161hvals = V303161hvals.objects.all()
-         v303161hval_serializer=V303161hvalSerializer(v303161hvals,many=True)
-         return JsonResponse(v303161hval_serializer.data,safe=False)
-
-    def put(self,request):
-         v303161hval_data=JSONParser().parse(request)
-         v303161hval=V303161hvals.objects.get(id_temp_agua_mar_val=v303161hval_data['id_temp_agua_mar_val'])
-         v303161hval_serializer=V1073161hSerializer(v303161hval,data=v303161hval_data)
-         if v303161hval_serializer.is_valid():
-            v303161hval_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-         return JsonResponse("Failed to Update")
-
-    def delete(self,request,id):
-        v303161hval=V303161hvals.objects.get(id_temp_agua_mar_val=id)
-        v303161hval.delete()
+        t29321hval=T29321hvals.objects.get(id_temp_aire_min_val=id)
+        t29321hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V42161hsApi(View):
+class T303161hsView(View):
       
     def post(self,request):
          
-         v42161h_data=JSONParser().parse(request)
-         v42161h_serializer=V42161hSerializer(data=v42161h_data)
-         if v42161h_serializer.is_valid():
-             v42161h_serializer.save()
+         t303161h_data=JSONParser().parse(request)
+         t303161h_serializer=T303161hSerializer(data=t303161h_data)
+         if t303161h_serializer.is_valid():
+             t303161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v42161hs = V42161hs.objects.all()
-         v42161h_serializer=V42161hSerializer(v42161hs,many=True)
-         return JsonResponse(v42161h_serializer.data,safe=False)
+         t303161hs = T303161hs.objects.all()
+         t303161h_serializer=T303161hSerializer(t303161hs,many=True)
+         return JsonResponse(t303161h_serializer.data,safe=False)
 
     def put(self,request):
-         v42161h_data=JSONParser().parse(request)
-         v42161h=V42161hs.objects.get(id_viento_dir=v42161h_data['id_viento_dir'])
-         v42161h_serializer=V1073161hSerializer(v42161h,data=v42161h_data)
-         if v42161h_serializer.is_valid():
-            v42161h_serializer.save()
+         t303161h_data=JSONParser().parse(request)
+         t303161h=T303161hs.objects.get(id_temp_agua_mar=t303161h_data['id_temp_agua_mar'])
+         t303161h_serializer=T1073161hSerializer(t303161h,data=t303161h_data)
+         if t303161h_serializer.is_valid():
+            t303161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v42161h=V42161hs.objects.get(id_viento_dir=id)
-        v42161h.delete()
+        t303161h=T303161hs.objects.get(id_temp_agua_mar=id)
+        t303161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
-class V42161hvalsApi(View):
+class T303161hvalsView(View):
       
     def post(self,request):
          
-         v42161hval_data=JSONParser().parse(request)
-         v42161hval_serializer=V42161hvalSerializer(data=v42161hval_data)
-         if v42161hval_serializer.is_valid():
-             v42161hval_serializer.save()
+         t303161hval_data=JSONParser().parse(request)
+         t303161hval_serializer=T303161hvalSerializer(data=t303161hval_data)
+         if t303161hval_serializer.is_valid():
+             t303161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v42161hvals = V42161hvals.objects.all()
-         v42161hval_serializer=V42161hvalSerializer(v42161hvals,many=True)
-         return JsonResponse(v42161hval_serializer.data,safe=False)
+         t303161hvals = T303161hvals.objects.all()
+         t303161hval_serializer=T303161hvalSerializer(t303161hvals,many=True)
+         return JsonResponse(t303161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v42161hval_data=JSONParser().parse(request)
-         v42161hval=V42161hvals.objects.get(id_viento_dir_val=v42161hval_data['id_viento_dir_val'])
-         v42161hval_serializer=V1073161hSerializer(v42161hval,data=v42161hval_data)
-         if v42161hval_serializer.is_valid():
-            v42161hval_serializer.save()
+         t303161hval_data=JSONParser().parse(request)
+         t303161hval=T303161hvals.objects.get(id_temp_agua_mar_val=t303161hval_data['id_temp_agua_mar_val'])
+         t303161hval_serializer=T1073161hSerializer(t303161hval,data=t303161hval_data)
+         if t303161hval_serializer.is_valid():
+            t303161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v42161hval=V42161hvals.objects.get(id_viento_dir_val=id)
-        v42161hval.delete()
-        return JsonResponse("Deleted Successfully",safe=False)     
-
-
-class V557161hsApi(View):
-      
-    def post(self,request):
-         
-         v557161h_data=JSONParser().parse(request)
-         v557161h_serializer=V557161hSerializer(data=v557161h_data)
-         if v557161h_serializer.is_valid():
-             v557161h_serializer.save()
-             return JsonResponse('Se agrrego correctamente',safe=False)
-         return   JsonResponse('No se pudo agregar ',safe=False) 
-   
-    def get(self,request):
-         v557161hs = V557161hs.objects.all()
-         v557161h_serializer=V557161hSerializer(v557161hs,many=True)
-         return JsonResponse(v557161h_serializer.data,safe=False)
-
-    def put(self,request):
-         v557161h_data=JSONParser().parse(request)
-         v557161h=V557161hs.objects.get(id_pres_red=v557161h_data['id_pres_red'])
-         v557161h_serializer=V1073161hSerializer(v557161h,data=v557161h_data)
-         if v557161h_serializer.is_valid():
-            v557161h_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-         return JsonResponse("Failed to Update")
-
-    def delete(self,request,id):
-        v557161h=V557161hs.objects.get(id_pres_red=id)
-        v557161h.delete()
+        t303161hval=T303161hvals.objects.get(id_temp_agua_mar_val=id)
+        t303161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V557161hvalsApi(View):
+class T42161hsView(View):
       
     def post(self,request):
          
-         v557161hval_data=JSONParser().parse(request)
-         v557161hval_serializer=V557161hvalSerializer(data=v557161hval_data)
-         if v557161hval_serializer.is_valid():
-             v557161hval_serializer.save()
+         t42161h_data=JSONParser().parse(request)
+         t42161h_serializer=T42161hSerializer(data=t42161h_data)
+         if t42161h_serializer.is_valid():
+             t42161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v557161hvals = V557161hvals.objects.all()
-         v557161hval_serializer=V557161hvalSerializer(v557161hvals,many=True)
-         return JsonResponse(v557161hval_serializer.data,safe=False)
+         t42161hs = T42161hs.objects.all()
+         t42161h_serializer=T42161hSerializer(t42161hs,many=True)
+         return JsonResponse(t42161h_serializer.data,safe=False)
 
     def put(self,request):
-         v557161hval_data=JSONParser().parse(request)
-         v557161hval=V557161hvals.objects.get(id_pres_red_val=v557161hval_data['id_pres_red_val'])
-         v557161hval_serializer=V1073161hSerializer(v557161hval,data=v557161hval_data)
-         if v557161hval_serializer.is_valid():
-            v557161hval_serializer.save()
+         t42161h_data=JSONParser().parse(request)
+         t42161h=T42161hs.objects.get(id_tiento_dir=t42161h_data['id_tiento_dir'])
+         t42161h_serializer=T1073161hSerializer(t42161h,data=t42161h_data)
+         if t42161h_serializer.is_valid():
+            t42161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v557161hval=V557161hvals.objects.get(id_pres_red_val=id)
-        v557161hval.delete()
+        t42161h=T42161hs.objects.get(id_tiento_dir=id)
+        t42161h.delete()
+        return JsonResponse("Deleted Successfully",safe=False)     
+
+class T42161hvalsView(View):
+      
+    def post(self,request):
+         
+         t42161hval_data=JSONParser().parse(request)
+         t42161hval_serializer=T42161hvalSerializer(data=t42161hval_data)
+         if t42161hval_serializer.is_valid():
+             t42161hval_serializer.sate()
+             return JsonResponse('Se agrrego correctamente',safe=False)
+         return   JsonResponse('No se pudo agregar ',safe=False) 
+   
+    def get(self,request):
+         t42161hvals = T42161hvals.objects.all()
+         t42161hval_serializer=T42161hvalSerializer(t42161hvals,many=True)
+         return JsonResponse(t42161hval_serializer.data,safe=False)
+
+    def put(self,request):
+         t42161hval_data=JSONParser().parse(request)
+         t42161hval=T42161hvals.objects.get(id_tiento_dir_val=t42161hval_data['id_tiento_dir_val'])
+         t42161hval_serializer=T1073161hSerializer(t42161hval,data=t42161hval_data)
+         if t42161hval_serializer.is_valid():
+            t42161hval_serializer.sate()
+            return JsonResponse("Updated Successfully",safe=False)
+         return JsonResponse("Failed to Update")
+
+    def delete(self,request,id):
+        t42161hval=T42161hvals.objects.get(id_tiento_dir_val=id)
+        t42161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V573161hsApi(View):
+class T557161hsView(View):
       
     def post(self,request):
          
-         v573161h_data=JSONParser().parse(request)
-         v573161h_serializer=V573161hSerializer(data=v573161h_data)
-         if v573161h_serializer.is_valid():
-             v573161h_serializer.save()
+         t557161h_data=JSONParser().parse(request)
+         t557161h_serializer=T557161hSerializer(data=t557161h_data)
+         if t557161h_serializer.is_valid():
+             t557161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v573161hs = V573161hs.objects.all()
-         v573161h_serializer=V573161hSerializer(v573161hs,many=True)
-         return JsonResponse(v573161h_serializer.data,safe=False)
+         t557161hs = T557161hs.objects.all()
+         t557161h_serializer=T557161hSerializer(t557161hs,many=True)
+         return JsonResponse(t557161h_serializer.data,safe=False)
 
     def put(self,request):
-         v573161h_data=JSONParser().parse(request)
-         v573161h=V573161hs.objects.get(id_term_seco=v573161h_data['id_term_seco'])
-         v573161h_serializer=V1073161hSerializer(v573161h,data=v573161h_data)
-         if v573161h_serializer.is_valid():
-            v573161h_serializer.save()
+         t557161h_data=JSONParser().parse(request)
+         t557161h=T557161hs.objects.get(id_pres_red=t557161h_data['id_pres_red'])
+         t557161h_serializer=T1073161hSerializer(t557161h,data=t557161h_data)
+         if t557161h_serializer.is_valid():
+            t557161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v573161h=V573161hs.objects.get(id_term_seco=id)
-        v573161h.delete()
+        t557161h=T557161hs.objects.get(id_pres_red=id)
+        t557161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V573161hvalsApi(View):
+class T557161hvalsView(View):
       
     def post(self,request):
          
-         v573161hval_data=JSONParser().parse(request)
-         v573161hval_serializer=V573161hvalSerializer(data=v573161hval_data)
-         if v573161hval_serializer.is_valid():
-             v573161hval_serializer.save()
+         t557161hval_data=JSONParser().parse(request)
+         t557161hval_serializer=T557161hvalSerializer(data=t557161hval_data)
+         if t557161hval_serializer.is_valid():
+             t557161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v573161hvals = V573161hvals.objects.all()
-         v573161hval_serializer=V573161hvalSerializer(v573161hvals,many=True)
-         return JsonResponse(v573161hval_serializer.data,safe=False)
+         t557161hvals = T557161hvals.objects.all()
+         t557161hval_serializer=T557161hvalSerializer(t557161hvals,many=True)
+         return JsonResponse(t557161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v573161hval_data=JSONParser().parse(request)
-         v573161hval=V573161hvals.objects.get(id_term_seco_val=v573161hval_data['id_term_seco_val'])
-         v573161hval_serializer=V1073161hSerializer(v573161hval,data=v573161hval_data)
-         if v573161hval_serializer.is_valid():
-            v573161hval_serializer.save()
+         t557161hval_data=JSONParser().parse(request)
+         t557161hval=T557161hvals.objects.get(id_pres_red_val=t557161hval_data['id_pres_red_val'])
+         t557161hval_serializer=T1073161hSerializer(t557161hval,data=t557161hval_data)
+         if t557161hval_serializer.is_valid():
+            t557161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v573161hval=V573161hvals.objects.get(id_term_seco_val=id)
-        v573161hval.delete()
+        t557161hval=T557161hvals.objects.get(id_pres_red_val=id)
+        t557161hval.delete()
+        return JsonResponse("Deleted Successfully",safe=False)     
+
+
+class T573161hsView(View):
+      
+    def post(self,request):
+         
+         t573161h_data=JSONParser().parse(request)
+         t573161h_serializer=T573161hSerializer(data=t573161h_data)
+         if t573161h_serializer.is_valid():
+             t573161h_serializer.sate()
+             return JsonResponse('Se agrrego correctamente',safe=False)
+         return   JsonResponse('No se pudo agregar ',safe=False) 
+   
+    def get(self,request):
+         t573161hs = T573161hs.objects.all()
+         t573161h_serializer=T573161hSerializer(t573161hs,many=True)
+         return JsonResponse(t573161h_serializer.data,safe=False)
+
+    def put(self,request):
+         t573161h_data=JSONParser().parse(request)
+         t573161h=T573161hs.objects.get(id_term_seco=t573161h_data['id_term_seco'])
+         t573161h_serializer=T1073161hSerializer(t573161h,data=t573161h_data)
+         if t573161h_serializer.is_valid():
+            t573161h_serializer.sate()
+            return JsonResponse("Updated Successfully",safe=False)
+         return JsonResponse("Failed to Update")
+
+    def delete(self,request,id):
+        t573161h=T573161hs.objects.get(id_term_seco=id)
+        t573161h.delete()
+        return JsonResponse("Deleted Successfully",safe=False)     
+
+
+class T573161hvalsView(View):
+      
+    def post(self,request):
+         
+         t573161hval_data=JSONParser().parse(request)
+         t573161hval_serializer=T573161hvalSerializer(data=t573161hval_data)
+         if t573161hval_serializer.is_valid():
+             t573161hval_serializer.sate()
+             return JsonResponse('Se agrrego correctamente',safe=False)
+         return   JsonResponse('No se pudo agregar ',safe=False) 
+   
+    def get(self,request):
+         t573161hvals = T573161hvals.objects.all()
+         t573161hval_serializer=T573161hvalSerializer(t573161hvals,many=True)
+         return JsonResponse(t573161hval_serializer.data,safe=False)
+
+    def put(self,request):
+         t573161hval_data=JSONParser().parse(request)
+         t573161hval=T573161hvals.objects.get(id_term_seco_val=t573161hval_data['id_term_seco_val'])
+         t573161hval_serializer=T1073161hSerializer(t573161hval,data=t573161hval_data)
+         if t573161hval_serializer.is_valid():
+            t573161hval_serializer.sate()
+            return JsonResponse("Updated Successfully",safe=False)
+         return JsonResponse("Failed to Update")
+
+    def delete(self,request,id):
+        t573161hval=T573161hvals.objects.get(id_term_seco_val=id)
+        t573161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)   
 
 
-class V583161hsApi(View):
+class T583161hsView(View):
       
     def post(self,request):
          
-         v583161h_data=JSONParser().parse(request)
-         v583161h_serializer=V583161hSerializer(data=v583161h_data)
-         if v583161h_serializer.is_valid():
-             v583161h_serializer.save()
+         t583161h_data=JSONParser().parse(request)
+         t583161h_serializer=T583161hSerializer(data=t583161h_data)
+         if t583161h_serializer.is_valid():
+             t583161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v583161hs = V583161hs.objects.all()
-         v583161h_serializer=V583161hSerializer(v583161hs,many=True)
-         return JsonResponse(v583161h_serializer.data,safe=False)
+         t583161hs = T583161hs.objects.all()
+         t583161h_serializer=T583161hSerializer(t583161hs,many=True)
+         return JsonResponse(t583161h_serializer.data,safe=False)
 
     def put(self,request):
-         v583161h_data=JSONParser().parse(request)
-         v583161h=V583161hs.objects.get(id_term_hmd=v583161h_data['id_term_hmd'])
-         v583161h_serializer=V1073161hSerializer(v583161h,data=v583161h_data)
-         if v583161h_serializer.is_valid():
-            v583161h_serializer.save()
+         t583161h_data=JSONParser().parse(request)
+         t583161h=T583161hs.objects.get(id_term_hmd=t583161h_data['id_term_hmd'])
+         t583161h_serializer=T1073161hSerializer(t583161h,data=t583161h_data)
+         if t583161h_serializer.is_valid():
+            t583161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v583161h=V583161hs.objects.get(id_term_hmd=id)
-        v583161h.delete()
+        t583161h=T583161hs.objects.get(id_term_hmd=id)
+        t583161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V583161hvalsApi(View):
+class T583161hvalsView(View):
       
     def post(self,request):
          
-         v583161hval_data=JSONParser().parse(request)
-         v583161hval_serializer=V583161hvalSerializer(data=v583161hval_data)
-         if v583161hval_serializer.is_valid():
-             v583161hval_serializer.save()
+         t583161hval_data=JSONParser().parse(request)
+         t583161hval_serializer=T583161hvalSerializer(data=t583161hval_data)
+         if t583161hval_serializer.is_valid():
+             t583161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v583161hvals = V583161hvals.objects.all()
-         v583161hval_serializer=V583161hvalSerializer(v583161hvals,many=True)
-         return JsonResponse(v583161hval_serializer.data,safe=False)
+         t583161hvals = T583161hvals.objects.all()
+         t583161hval_serializer=T583161hvalSerializer(t583161hvals,many=True)
+         return JsonResponse(t583161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v583161hval_data=JSONParser().parse(request)
-         v583161hval=V583161hvals.objects.get(id_term_hmd_val=v583161hval_data['id_term_hmd_val'])
-         v583161hval_serializer=V1073161hSerializer(v583161hval,data=v583161hval_data)
-         if v583161hval_serializer.is_valid():
-            v583161hval_serializer.save()
+         t583161hval_data=JSONParser().parse(request)
+         t583161hval=T583161hvals.objects.get(id_term_hmd_val=t583161hval_data['id_term_hmd_val'])
+         t583161hval_serializer=T1073161hSerializer(t583161hval,data=t583161hval_data)
+         if t583161hval_serializer.is_valid():
+            t583161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v583161hval=V583161hvals.objects.get(id_term_hmd_val=id)
-        v583161hval.delete()
+        t583161hval=T583161hvals.objects.get(id_term_hmd_val=id)
+        t583161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V597161hsApi(View):
+class T597161hsView(View):
       
     def post(self,request):
          
-         v597161h_data=JSONParser().parse(request)
-         v597161h_serializer=V597161hSerializer(data=v597161h_data)
-         if v597161h_serializer.is_valid():
-             v597161h_serializer.save()
+         t597161h_data=JSONParser().parse(request)
+         t597161h_serializer=T597161hSerializer(data=t597161h_data)
+         if t597161h_serializer.is_valid():
+             t597161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v597161hs = V597161hs.objects.all()
-         v597161h_serializer=V597161hSerializer(v597161hs,many=True)
-         return JsonResponse(v597161h_serializer.data,safe=False)
+         t597161hs = T597161hs.objects.all()
+         t597161h_serializer=T597161hSerializer(t597161hs,many=True)
+         return JsonResponse(t597161h_serializer.data,safe=False)
 
     def put(self,request):
-         v597161h_data=JSONParser().parse(request)
-         v597161h=V597161hs.objects.get(id_tension_vapor=v597161h_data['id_tension_vapor'])
-         v597161h_serializer=V1073161hSerializer(v597161h,data=v597161h_data)
-         if v597161h_serializer.is_valid():
-            v597161h_serializer.save()
+         t597161h_data=JSONParser().parse(request)
+         t597161h=T597161hs.objects.get(id_tension_tapor=t597161h_data['id_tension_tapor'])
+         t597161h_serializer=T1073161hSerializer(t597161h,data=t597161h_data)
+         if t597161h_serializer.is_valid():
+            t597161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v597161h=V597161hs.objects.get(id_tension_vapor=id)
-        v597161h.delete()
+        t597161h=T597161hs.objects.get(id_tension_tapor=id)
+        t597161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)    
 
 
-class V597161hvalsApi(View):
+class T597161hvalsView(View):
       
     def post(self,request):
          
-         v597161hval_data=JSONParser().parse(request)
-         v597161hval_serializer=V597161hvalSerializer(data=v597161hval_data)
-         if v597161hval_serializer.is_valid():
-             v597161hval_serializer.save()
+         t597161hval_data=JSONParser().parse(request)
+         t597161hval_serializer=T597161hvalSerializer(data=t597161hval_data)
+         if t597161hval_serializer.is_valid():
+             t597161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v597161hvals = V597161hvals.objects.all()
-         v597161hval_serializer=V597161hvalSerializer(v597161hvals,many=True)
-         return JsonResponse(v597161hval_serializer.data,safe=False)
+         t597161hvals = T597161hvals.objects.all()
+         t597161hval_serializer=T597161hvalSerializer(t597161hvals,many=True)
+         return JsonResponse(t597161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v597161hval_data=JSONParser().parse(request)
-         v597161hval=V597161hvals.objects.get(id_tension_vapor_val=v597161hval_data['id_tension_vapor_val'])
-         v597161hval_serializer=V1073161hSerializer(v597161hval,data=v597161hval_data)
-         if v597161hval_serializer.is_valid():
-            v597161hval_serializer.save()
+         t597161hval_data=JSONParser().parse(request)
+         t597161hval=T597161hvals.objects.get(id_tension_tapor_val=t597161hval_data['id_tension_tapor_val'])
+         t597161hval_serializer=T1073161hSerializer(t597161hval,data=t597161hval_data)
+         if t597161hval_serializer.is_valid():
+            t597161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v597161hval=V597161hvals.objects.get(id_tension_vapor_val=id)
-        v597161hval.delete()
+        t597161hval=T597161hvals.objects.get(id_tension_tapor_val=id)
+        t597161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V603161hsApi(View):
+class T603161hsView(View):
       
     def post(self,request):
          
-         v603161h_data=JSONParser().parse(request)
-         v603161h_serializer=V603161hSerializer(data=v603161h_data)
-         if v603161h_serializer.is_valid():
-             v603161h_serializer.save()
+         t603161h_data=JSONParser().parse(request)
+         t603161h_serializer=T603161hSerializer(data=t603161h_data)
+         if t603161h_serializer.is_valid():
+             t603161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v603161hs = V603161hs.objects.all()
-         v603161h_serializer=V603161hSerializer(v603161hs,many=True)
-         return JsonResponse(v603161h_serializer.data,safe=False)
+         t603161hs = T603161hs.objects.all()
+         t603161h_serializer=T603161hSerializer(t603161hs,many=True)
+         return JsonResponse(t603161h_serializer.data,safe=False)
 
     def put(self,request):
-         v603161h_data=JSONParser().parse(request)
-         v603161h=V603161hs.objects.get(id_punto_rocio=v603161h_data['id_punto_rocio'])
-         v603161h_serializer=V1073161hSerializer(v603161h,data=v603161h_data)
-         if v603161h_serializer.is_valid():
-            v603161h_serializer.save()
+         t603161h_data=JSONParser().parse(request)
+         t603161h=T603161hs.objects.get(id_punto_rocio=t603161h_data['id_punto_rocio'])
+         t603161h_serializer=T1073161hSerializer(t603161h,data=t603161h_data)
+         if t603161h_serializer.is_valid():
+            t603161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v603161h=V603161hs.objects.get(id_punto_rocio=id)
-        v603161h.delete()
+        t603161h=T603161hs.objects.get(id_punto_rocio=id)
+        t603161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
-class V603161hvalsApi(View):
+class T603161hvalsView(View):
       
     def post(self,request):
          
-         v603161hval_data=JSONParser().parse(request)
-         v603161hval_serializer=V603161hvalSerializer(data=v603161hval_data)
-         if v603161hval_serializer.is_valid():
-             v603161hval_serializer.save()
+         t603161hval_data=JSONParser().parse(request)
+         t603161hval_serializer=T603161hvalSerializer(data=t603161hval_data)
+         if t603161hval_serializer.is_valid():
+             t603161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v603161hvals = V603161hvals.objects.all()
-         v603161hval_serializer=V603161hvalSerializer(v603161hvals,many=True)
-         return JsonResponse(v603161hval_serializer.data,safe=False)
+         t603161hvals = T603161hvals.objects.all()
+         t603161hval_serializer=T603161hvalSerializer(t603161hvals,many=True)
+         return JsonResponse(t603161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v603161hval_data=JSONParser().parse(request)
-         v603161hval=V603161hvals.objects.get(id_punto_rocio_val=v603161hval_data['id_punto_rocio_val'])
-         v603161hval_serializer=V1073161hSerializer(v603161hval,data=v603161hval_data)
-         if v603161hval_serializer.is_valid():
-            v603161hval_serializer.save()
+         t603161hval_data=JSONParser().parse(request)
+         t603161hval=T603161hvals.objects.get(id_punto_rocio_val=t603161hval_data['id_punto_rocio_val'])
+         t603161hval_serializer=T1073161hSerializer(t603161hval,data=t603161hval_data)
+         if t603161hval_serializer.is_valid():
+            t603161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v603161hval=V603161hvals.objects.get(id_punto_rocio_val=id)
-        v603161hval.delete()
-        return JsonResponse("Deleted Successfully",safe=False)     
-
-
-class V614161hsApi(View):
-      
-    def post(self,request):
-         
-         v614161h_data=JSONParser().parse(request)
-         v614161h_serializer=V614161hSerializer(data=v614161h_data)
-         if v614161h_serializer.is_valid():
-             v614161h_serializer.save()
-             return JsonResponse('Se agrrego correctamente',safe=False)
-         return   JsonResponse('No se pudo agregar ',safe=False) 
-   
-    def get(self,request):
-         v614161hs = V614161hs.objects.all()
-         v614161h_serializer=V614161hSerializer(v614161hs,many=True)
-         return JsonResponse(v614161h_serializer.data,safe=False)
-
-    def put(self,request):
-         v614161h_data=JSONParser().parse(request)
-         v614161h=V614161hs.objects.get(id_evapo=v614161h_data['id_evapo'])
-         v614161h_serializer=V1073161hSerializer(v614161h,data=v614161h_data)
-         if v614161h_serializer.is_valid():
-            v614161h_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-         return JsonResponse("Failed to Update")
-
-    def delete(self,request,id):
-        v614161h=V614161hs.objects.get(id_evapo=id)
-        v614161h.delete()
+        t603161hval=T603161hvals.objects.get(id_punto_rocio_val=id)
+        t603161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V614161hvalsApi(View):
+class T614161hsView(View):
       
     def post(self,request):
          
-         v614161hval_data=JSONParser().parse(request)
-         v614161hval_serializer=V614161hvalSerializer(data=v614161hval_data)
-         if v614161hval_serializer.is_valid():
-             v614161hval_serializer.save()
+         t614161h_data=JSONParser().parse(request)
+         t614161h_serializer=T614161hSerializer(data=t614161h_data)
+         if t614161h_serializer.is_valid():
+             t614161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v614161hvals = V614161hvals.objects.all()
-         v614161hval_serializer=V614161hvalSerializer(v614161hvals,many=True)
-         return JsonResponse(v614161hval_serializer.data,safe=False)
+         t614161hs = T614161hs.objects.all()
+         t614161h_serializer=T614161hSerializer(t614161hs,many=True)
+         return JsonResponse(t614161h_serializer.data,safe=False)
 
     def put(self,request):
-         v614161hval_data=JSONParser().parse(request)
-         v614161hval=V614161hvals.objects.get(id_evapo_val=v614161hval_data['id_evapo_val'])
-         v614161hval_serializer=V1073161hSerializer(v614161hval,data=v614161hval_data)
-         if v614161hval_serializer.is_valid():
-            v614161hval_serializer.save()
+         t614161h_data=JSONParser().parse(request)
+         t614161h=T614161hs.objects.get(id_etapo=t614161h_data['id_etapo'])
+         t614161h_serializer=T1073161hSerializer(t614161h,data=t614161h_data)
+         if t614161h_serializer.is_valid():
+            t614161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v614161hval=V614161hvals.objects.get(id_evapo_val=id)
-        v614161hval.delete()
+        t614161h=T614161hs.objects.get(id_etapo=id)
+        t614161h.delete()
+        return JsonResponse("Deleted Successfully",safe=False)     
+
+
+class T614161hvalsView(View):
+      
+    def post(self,request):
+         
+         t614161hval_data=JSONParser().parse(request)
+         t614161hval_serializer=T614161hvalSerializer(data=t614161hval_data)
+         if t614161hval_serializer.is_valid():
+             t614161hval_serializer.sate()
+             return JsonResponse('Se agrrego correctamente',safe=False)
+         return   JsonResponse('No se pudo agregar ',safe=False) 
+   
+    def get(self,request):
+         t614161hvals = T614161hvals.objects.all()
+         t614161hval_serializer=T614161hvalSerializer(t614161hvals,many=True)
+         return JsonResponse(t614161hval_serializer.data,safe=False)
+
+    def put(self,request):
+         t614161hval_data=JSONParser().parse(request)
+         t614161hval=T614161hvals.objects.get(id_etapo_val=t614161hval_data['id_etapo_val'])
+         t614161hval_serializer=T1073161hSerializer(t614161hval,data=t614161hval_data)
+         if t614161hval_serializer.is_valid():
+            t614161hval_serializer.sate()
+            return JsonResponse("Updated Successfully",safe=False)
+         return JsonResponse("Failed to Update")
+
+    def delete(self,request,id):
+        t614161hval=T614161hvals.objects.get(id_etapo_val=id)
+        t614161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False) 
 
 
 
-class V644161hsApi(View):
+class T644161hsView(View):
       
     def post(self,request):
          
-         v644161h_data=JSONParser().parse(request)
-         v644161h_serializer=V644161hSerializer(data=v644161h_data)
-         if v644161h_serializer.is_valid():
-             v644161h_serializer.save()
+         t644161h_data=JSONParser().parse(request)
+         t644161h_serializer=T644161hSerializer(data=t644161h_data)
+         if t644161h_serializer.is_valid():
+             t644161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v644161hs = V644161hs.objects.all()
-         v644161h_serializer=V644161hSerializer(v644161hs,many=True)
-         return JsonResponse(v644161h_serializer.data,safe=False)
+         t644161hs = T644161hs.objects.all()
+         t644161h_serializer=T644161hSerializer(t644161hs,many=True)
+         return JsonResponse(t644161h_serializer.data,safe=False)
 
     def put(self,request):
-         v644161h_data=JSONParser().parse(request)
-         v644161h=V644161hs.objects.get(id_nube=v644161h_data['id_nube'])
-         v644161h_serializer=V1073161hSerializer(v644161h,data=v644161h_data)
-         if v644161h_serializer.is_valid():
-            v644161h_serializer.save()
+         t644161h_data=JSONParser().parse(request)
+         t644161h=T644161hs.objects.get(id_nube=t644161h_data['id_nube'])
+         t644161h_serializer=T1073161hSerializer(t644161h,data=t644161h_data)
+         if t644161h_serializer.is_valid():
+            t644161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v644161h=V644161hs.objects.get(id_nube=id)
-        v644161h.delete()
+        t644161h=T644161hs.objects.get(id_nube=id)
+        t644161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V644161hvalsApi(View):
+class T644161hvalsView(View):
       
     def post(self,request):
          
-         v644161hval_data=JSONParser().parse(request)
-         v644161hval_serializer=V644161hvalSerializer(data=v644161hval_data)
-         if v644161hval_serializer.is_valid():
-             v644161hval_serializer.save()
+         t644161hval_data=JSONParser().parse(request)
+         t644161hval_serializer=T644161hvalSerializer(data=t644161hval_data)
+         if t644161hval_serializer.is_valid():
+             t644161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v644161hvals = V644161hvals.objects.all()
-         v644161hval_serializer=V644161hvalSerializer(v644161hvals,many=True)
-         return JsonResponse(v644161hval_serializer.data,safe=False)
+         t644161hvals = T644161hvals.objects.all()
+         t644161hval_serializer=T644161hvalSerializer(t644161hvals,many=True)
+         return JsonResponse(t644161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v644161hval_data=JSONParser().parse(request)
-         v644161hval=V644161hvals.objects.get(id_nube_val=v644161hval_data['id_nube_val'])
-         v644161hval_serializer=V1073161hSerializer(v644161hval,data=v644161hval_data)
-         if v644161hval_serializer.is_valid():
-            v644161hval_serializer.save()
+         t644161hval_data=JSONParser().parse(request)
+         t644161hval=T644161hvals.objects.get(id_nube_val=t644161hval_data['id_nube_val'])
+         t644161hval_serializer=T1073161hSerializer(t644161hval,data=t644161hval_data)
+         if t644161hval_serializer.is_valid():
+            t644161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v644161hval=V644161hvals.objects.get(id_nube_val=id)
-        v644161hval.delete()
+        t644161hval=T644161hvals.objects.get(id_nube_val=id)
+        t644161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V674161hsApi(View):
+class T674161hsView(View):
       
     def post(self,request):
          
-         v674161h_data=JSONParser().parse(request)
-         v674161h_serializer=V674161hSerializer(data=v674161h_data)
-         if v674161h_serializer.is_valid():
-             v674161h_serializer.save()
+         t674161h_data=JSONParser().parse(request)
+         t674161h_serializer=T674161hSerializer(data=t674161h_data)
+         if t674161h_serializer.is_valid():
+             t674161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v674161hs = V674161hs.objects.all()
-         v674161h_serializer=V674161hSerializer(v674161hs,many=True)
-         return JsonResponse(v674161h_serializer.data,safe=False)
+         t674161hs = T674161hs.objects.all()
+         t674161h_serializer=T674161hSerializer(t674161hs,many=True)
+         return JsonResponse(t674161h_serializer.data,safe=False)
 
     def put(self,request):
-         v674161h_data=JSONParser().parse(request)
-         v674161h=V674161hs.objects.get(id_nube=v674161h_data['id_nube'])
-         v674161h_serializer=V1073161hSerializer(v674161h,data=v674161h_data)
-         if v674161h_serializer.is_valid():
-            v674161h_serializer.save()
+         t674161h_data=JSONParser().parse(request)
+         t674161h=T674161hs.objects.get(id_nube=t674161h_data['id_nube'])
+         t674161h_serializer=T1073161hSerializer(t674161h,data=t674161h_data)
+         if t674161h_serializer.is_valid():
+            t674161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v674161h=V674161hs.objects.get(id_nube=id)
-        v674161h.delete()
+        t674161h=T674161hs.objects.get(id_nube=id)
+        t674161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V674161hvalsApi(View):
+class T674161hvalsView(View):
       
     def post(self,request):
          
-         v674161hval_data=JSONParser().parse(request)
-         v674161hval_serializer=V674161hvalSerializer(data=v674161hval_data)
-         if v674161hval_serializer.is_valid():
-             v674161hval_serializer.save()
+         t674161hval_data=JSONParser().parse(request)
+         t674161hval_serializer=T674161hvalSerializer(data=t674161hval_data)
+         if t674161hval_serializer.is_valid():
+             t674161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v674161hvals = V674161hvals.objects.all()
-         v674161hval_serializer=V674161hvalSerializer(v674161hvals,many=True)
-         return JsonResponse(v674161hval_serializer.data,safe=False)
+         t674161hvals = T674161hvals.objects.all()
+         t674161hval_serializer=T674161hvalSerializer(t674161hvals,many=True)
+         return JsonResponse(t674161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v674161hval_data=JSONParser().parse(request)
-         v674161hval=V674161hvals.objects.get(id_nube_val=v674161hval_data['id_nube_val'])
-         v674161hval_serializer=V1073161hSerializer(v674161hval,data=v674161hval_data)
-         if v674161hval_serializer.is_valid():
-            v674161hval_serializer.save()
+         t674161hval_data=JSONParser().parse(request)
+         t674161hval=T674161hvals.objects.get(id_nube_val=t674161hval_data['id_nube_val'])
+         t674161hval_serializer=T1073161hSerializer(t674161hval,data=t674161hval_data)
+         if t674161hval_serializer.is_valid():
+            t674161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v674161hval=V674161hvals.objects.get(id_nube_val=id)
-        v674161hval.delete()
+        t674161hval=T674161hvals.objects.get(id_nube_val=id)
+        t674161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)    
 
 
 
-class V704161hsApi(View):
+class T704161hsView(View):
       
     def post(self,request):
          
-         v704161h_data=JSONParser().parse(request)
-         v704161h_serializer=V704161hSerializer(data=v704161h_data)
-         if v704161h_serializer.is_valid():
-             v704161h_serializer.save()
+         t704161h_data=JSONParser().parse(request)
+         t704161h_serializer=T704161hSerializer(data=t704161h_data)
+         if t704161h_serializer.is_valid():
+             t704161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v704161hs = V704161hs.objects.all()
-         v704161h_serializer=V704161hSerializer(v704161hs,many=True)
-         return JsonResponse(v704161h_serializer.data,safe=False)
+         t704161hs = T704161hs.objects.all()
+         t704161h_serializer=T704161hSerializer(t704161hs,many=True)
+         return JsonResponse(t704161h_serializer.data,safe=False)
 
     def put(self,request):
-         v704161h_data=JSONParser().parse(request)
-         v704161h=V704161hs.objects.get(id_nube=v704161h_data['id_nube'])
-         v704161h_serializer=V1073161hSerializer(v704161h,data=v704161h_data)
-         if v704161h_serializer.is_valid():
-            v704161h_serializer.save()
+         t704161h_data=JSONParser().parse(request)
+         t704161h=T704161hs.objects.get(id_nube=t704161h_data['id_nube'])
+         t704161h_serializer=T1073161hSerializer(t704161h,data=t704161h_data)
+         if t704161h_serializer.is_valid():
+            t704161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v704161h=V704161hs.objects.get(id_nube=id)
-        v704161h.delete()
+        t704161h=T704161hs.objects.get(id_nube=id)
+        t704161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V704161hvalsApi(View):
+class T704161hvalsView(View):
       
     def post(self,request):
          
-         v704161hval_data=JSONParser().parse(request)
-         v704161hval_serializer=V704161hvalSerializer(data=v704161hval_data)
-         if v704161hval_serializer.is_valid():
-             v704161hval_serializer.save()
+         t704161hval_data=JSONParser().parse(request)
+         t704161hval_serializer=T704161hvalSerializer(data=t704161hval_data)
+         if t704161hval_serializer.is_valid():
+             t704161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v704161hvals = V704161hvals.objects.all()
-         v704161hval_serializer=V704161hvalSerializer(v704161hvals,many=True)
-         return JsonResponse(v704161hval_serializer.data,safe=False)
+         t704161hvals = T704161hvals.objects.all()
+         t704161hval_serializer=T704161hvalSerializer(t704161hvals,many=True)
+         return JsonResponse(t704161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v704161hval_data=JSONParser().parse(request)
-         v704161hval=V704161hvals.objects.get(id_nube_val=v704161hval_data['id_nube_val'])
-         v704161hval_serializer=V1073161hSerializer(v704161hval,data=v704161hval_data)
-         if v704161hval_serializer.is_valid():
-            v704161hval_serializer.save()
+         t704161hval_data=JSONParser().parse(request)
+         t704161hval=T704161hvals.objects.get(id_nube_val=t704161hval_data['id_nube_val'])
+         t704161hval_serializer=T1073161hSerializer(t704161hval,data=t704161hval_data)
+         if t704161hval_serializer.is_valid():
+            t704161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v704161hval=V704161hvals.objects.get(id_nube_val=id)
-        v704161hval.delete()
+        t704161hval=T704161hvals.objects.get(id_nube_val=id)
+        t704161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)     
 
 
-class V7229161hsApi(View):
+class T7229161hsView(View):
       
     def post(self,request):
          
-         v7229161h_data=JSONParser().parse(request)
-         v7229161h_serializer=V7229161hSerializer(data=v7229161h_data)
-         if v7229161h_serializer.is_valid():
-             v7229161h_serializer.save()
+         t7229161h_data=JSONParser().parse(request)
+         t7229161h_serializer=T7229161hSerializer(data=t7229161h_data)
+         if t7229161h_serializer.is_valid():
+             t7229161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v7229161hs = V7229161hs.objects.all()
-         v7229161h_serializer=V7229161hSerializer(v7229161hs,many=True)
-         return JsonResponse(v7229161h_serializer.data,safe=False)
+         t7229161hs = T7229161hs.objects.all()
+         t7229161h_serializer=T7229161hSerializer(t7229161hs,many=True)
+         return JsonResponse(t7229161h_serializer.data,safe=False)
 
     def put(self,request):
-         v7229161h_data=JSONParser().parse(request)
-         v7229161h=V7229161hs.objects.get(id_visibilidad_hor=v7229161h_data['id_visibilidad_hor'])
-         v7229161h_serializer=V1073161hSerializer(v7229161h,data=v7229161h_data)
-         if v7229161h_serializer.is_valid():
-            v7229161h_serializer.save()
+         t7229161h_data=JSONParser().parse(request)
+         t7229161h=T7229161hs.objects.get(id_tisibilidad_hor=t7229161h_data['id_tisibilidad_hor'])
+         t7229161h_serializer=T1073161hSerializer(t7229161h,data=t7229161h_data)
+         if t7229161h_serializer.is_valid():
+            t7229161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v7229161h=V7229161hs.objects.get(id_visibilidad_hor=id)
-        v7229161h.delete()
+        t7229161h=T7229161hs.objects.get(id_tisibilidad_hor=id)
+        t7229161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
 
-class V7229161hvalsApi(View):
+class T7229161hvalsView(View):
       
     def post(self,request):
          
-         v7229161hval_data=JSONParser().parse(request)
-         v7229161hval_serializer=V7229161hvalSerializer(data=v7229161hval_data)
-         if v7229161hval_serializer.is_valid():
-             v7229161hval_serializer.save()
+         t7229161hval_data=JSONParser().parse(request)
+         t7229161hval_serializer=T7229161hvalSerializer(data=t7229161hval_data)
+         if t7229161hval_serializer.is_valid():
+             t7229161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v7229161hvals = V7229161hvals.objects.all()
-         v7229161hval_serializer=V7229161hvalSerializer(v7229161hvals,many=True)
-         return JsonResponse(v7229161hval_serializer.data,safe=False)
+         t7229161hvals = T7229161hvals.objects.all()
+         t7229161hval_serializer=T7229161hvalSerializer(t7229161hvals,many=True)
+         return JsonResponse(t7229161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v7229161hval_data=JSONParser().parse(request)
-         v7229161hval=V7229161hvals.objects.get(id_visibilidad_hor_val=v7229161hval_data['id_visibilidad_hor_val'])
-         v7229161hval_serializer=V1073161hSerializer(v7229161hval,data=v7229161hval_data)
-         if v7229161hval_serializer.is_valid():
-            v7229161hval_serializer.save()
+         t7229161hval_data=JSONParser().parse(request)
+         t7229161hval=T7229161hvals.objects.get(id_tisibilidad_hor_val=t7229161hval_data['id_tisibilidad_hor_val'])
+         t7229161hval_serializer=T1073161hSerializer(t7229161hval,data=t7229161hval_data)
+         if t7229161hval_serializer.is_valid():
+            t7229161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v7229161hval=V7229161hvals.objects.get(id_visibilidad_hor_val=id)
-        v7229161hval.delete()
+        t7229161hval=T7229161hvals.objects.get(id_tisibilidad_hor_val=id)
+        t7229161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
-class V7514161hsApi(View):
+class T7514161hsView(View):
       
     def post(self,request):
          
-         v7514161h_data=JSONParser().parse(request)
-         v7514161h_serializer=V7514161hSerializer(data=v7514161h_data)
-         if v7514161h_serializer.is_valid():
-             v7514161h_serializer.save()
+         t7514161h_data=JSONParser().parse(request)
+         t7514161h_serializer=T7514161hSerializer(data=t7514161h_data)
+         if t7514161h_serializer.is_valid():
+             t7514161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v7514161hs = V7514161hs.objects.all()
-         v7514161h_serializer=V7514161hSerializer(v7514161hs,many=True)
-         return JsonResponse(v7514161h_serializer.data,safe=False)
+         t7514161hs = T7514161hs.objects.all()
+         t7514161h_serializer=T7514161hSerializer(t7514161hs,many=True)
+         return JsonResponse(t7514161h_serializer.data,safe=False)
 
     def put(self,request):
-         v7514161h_data=JSONParser().parse(request)
-         v7514161h=V7514161hs.objects.get(id_reduc_tanque=v7514161h_data['id_reduc_tanque'])
-         v7514161h_serializer=V1073161hSerializer(v7514161h,data=v7514161h_data)
-         if v7514161h_serializer.is_valid():
-            v7514161h_serializer.save()
+         t7514161h_data=JSONParser().parse(request)
+         t7514161h=T7514161hs.objects.get(id_reduc_tanque=t7514161h_data['id_reduc_tanque'])
+         t7514161h_serializer=T1073161hSerializer(t7514161h,data=t7514161h_data)
+         if t7514161h_serializer.is_valid():
+            t7514161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v7514161h=V7514161hs.objects.get(id_reduc_tanque=id)
-        v7514161h.delete()
+        t7514161h=T7514161hs.objects.get(id_reduc_tanque=id)
+        t7514161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
-class V7514161hvalsApi(View):
+class T7514161hvalsView(View):
       
     def post(self,request):
          
-         v7514161hval_data=JSONParser().parse(request)
-         v7514161hval_serializer=V7514161hvalSerializer(data=v7514161hval_data)
-         if v7514161hval_serializer.is_valid():
-             v7514161hval_serializer.save()
+         t7514161hval_data=JSONParser().parse(request)
+         t7514161hval_serializer=T7514161hvalSerializer(data=t7514161hval_data)
+         if t7514161hval_serializer.is_valid():
+             t7514161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v7514161hvals = V7514161hvals.objects.all()
-         v7514161hval_serializer=V7514161hvalSerializer(v7514161hvals,many=True)
-         return JsonResponse(v7514161hval_serializer.data,safe=False)
+         t7514161hvals = T7514161hvals.objects.all()
+         t7514161hval_serializer=T7514161hvalSerializer(t7514161hvals,many=True)
+         return JsonResponse(t7514161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v7514161hval_data=JSONParser().parse(request)
-         v7514161hval=V7514161hvals.objects.get(id_reduc_tanque_val=v7514161hval_data['id_reduc_tanque_val'])
-         v7514161hval_serializer=V1073161hSerializer(v7514161hval,data=v7514161hval_data)
-         if v7514161hval_serializer.is_valid():
-            v7514161hval_serializer.save()
+         t7514161hval_data=JSONParser().parse(request)
+         t7514161hval=T7514161hvals.objects.get(id_reduc_tanque_val=t7514161hval_data['id_reduc_tanque_val'])
+         t7514161hval_serializer=T1073161hSerializer(t7514161hval,data=t7514161hval_data)
+         if t7514161hval_serializer.is_valid():
+            t7514161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v7514161hval=V7514161hvals.objects.get(id_reduc_tanque_val=id)
-        v7514161hval.delete()
+        t7514161hval=T7514161hvals.objects.get(id_reduc_tanque_val=id)
+        t7514161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
-class V765161hsApi(View):
+class T765161hsView(View):
       
     def post(self,request):
          
-         v765161h_data=JSONParser().parse(request)
-         v765161h_serializer=V765161hSerializer(data=v765161h_data)
-         if v765161h_serializer.is_valid():
-             v765161h_serializer.save()
+         t765161h_data=JSONParser().parse(request)
+         t765161h_serializer=T765161hSerializer(data=t765161h_data)
+         if t765161h_serializer.is_valid():
+             t765161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v765161hs = V765161hs.objects.all()
-         v765161h_serializer=V765161hSerializer(v765161hs,many=True)
-         return JsonResponse(v765161h_serializer.data,safe=False)
+         t765161hs = T765161hs.objects.all()
+         t765161h_serializer=T765161hSerializer(t765161hs,many=True)
+         return JsonResponse(t765161h_serializer.data,safe=False)
 
     def put(self,request):
-         v765161h_data=JSONParser().parse(request)
-         v765161h=V765161hs.objects.get(id_agua_sacada=v765161h_data['id_agua_sacada'])
-         v765161h_serializer=V1073161hSerializer(v765161h,data=v765161h_data)
-         if v765161h_serializer.is_valid():
-            v765161h_serializer.save()
+         t765161h_data=JSONParser().parse(request)
+         t765161h=T765161hs.objects.get(id_agua_sacada=t765161h_data['id_agua_sacada'])
+         t765161h_serializer=T1073161hSerializer(t765161h,data=t765161h_data)
+         if t765161h_serializer.is_valid():
+            t765161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v765161h=V765161hs.objects.get(id_agua_sacada=id)
-        v765161h.delete()
+        t765161h=T765161hs.objects.get(id_agua_sacada=id)
+        t765161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
-class V765161hvalsApi(View):
+class T765161hvalsView(View):
       
     def post(self,request):
          
-         v765161hval_data=JSONParser().parse(request)
-         v765161hval_serializer=V765161hvalSerializer(data=v765161hval_data)
-         if v765161hval_serializer.is_valid():
-             v765161hval_serializer.save()
+         t765161hval_data=JSONParser().parse(request)
+         t765161hval_serializer=T765161hvalSerializer(data=t765161hval_data)
+         if t765161hval_serializer.is_valid():
+             t765161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v765161hvals = V765161hvals.objects.all()
-         v765161hval_serializer=V765161hvalSerializer(v765161hvals,many=True)
-         return JsonResponse(v765161hval_serializer.data,safe=False)
+         t765161hvals = T765161hvals.objects.all()
+         t765161hval_serializer=T765161hvalSerializer(t765161hvals,many=True)
+         return JsonResponse(t765161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v765161hval_data=JSONParser().parse(request)
-         v765161hval=V765161hvals.objects.get(id_agua_sacada_val=v765161hval_data['id_agua_sacada_val'])
-         v765161hval_serializer=V1073161hSerializer(v765161hval,data=v765161hval_data)
-         if v765161hval_serializer.is_valid():
-            v765161hval_serializer.save()
+         t765161hval_data=JSONParser().parse(request)
+         t765161hval=T765161hvals.objects.get(id_agua_sacada_val=t765161hval_data['id_agua_sacada_val'])
+         t765161hval_serializer=T1073161hSerializer(t765161hval,data=t765161hval_data)
+         if t765161hval_serializer.is_valid():
+            t765161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v765161hval=V765161hvals.objects.get(id_agua_sacada_val=id)
-        v765161hval.delete()
+        t765161hval=T765161hvals.objects.get(id_agua_sacada_val=id)
+        t765161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
-class V775161hsApi(View):
+class T775161hsView(View):
       
     def post(self,request):
          
-         v775161h_data=JSONParser().parse(request)
-         v775161h_serializer=V775161hSerializer(data=v775161h_data)
-         if v775161h_serializer.is_valid():
-             v775161h_serializer.save()
+         t775161h_data=JSONParser().parse(request)
+         t775161h_serializer=T775161hSerializer(data=t775161h_data)
+         if t775161h_serializer.is_valid():
+             t775161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v775161hs = V775161hs.objects.all()
-         v775161h_serializer=V775161hSerializer(v775161hs,many=True)
-         return JsonResponse(v775161h_serializer.data,safe=False)
+         t775161hs = T775161hs.objects.all()
+         t775161h_serializer=T775161hSerializer(t775161hs,many=True)
+         return JsonResponse(t775161h_serializer.data,safe=False)
 
     def put(self,request):
-         v775161h_data=JSONParser().parse(request)
-         v775161h=V775161hs.objects.get(id_agua_aniadida=v775161h_data['id_agua_aniadida'])
-         v775161h_serializer=V1073161hSerializer(v775161h,data=v775161h_data)
-         if v775161h_serializer.is_valid():
-            v775161h_serializer.save()
+         t775161h_data=JSONParser().parse(request)
+         t775161h=T775161hs.objects.get(id_agua_aniadida=t775161h_data['id_agua_aniadida'])
+         t775161h_serializer=T1073161hSerializer(t775161h,data=t775161h_data)
+         if t775161h_serializer.is_valid():
+            t775161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v775161h=V775161hs.objects.get(id_agua_aniadida=id)
-        v775161h.delete()
+        t775161h=T775161hs.objects.get(id_agua_aniadida=id)
+        t775161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
         
 
-class V775161hvalsApi(View):
+class T775161hvalsView(View):
       
     def post(self,request):
          
-         v775161hval_data=JSONParser().parse(request)
-         v775161hval_serializer=V775161hvalSerializer(data=v775161hval_data)
-         if v775161hval_serializer.is_valid():
-             v775161hval_serializer.save()
+         t775161hval_data=JSONParser().parse(request)
+         t775161hval_serializer=T775161hvalSerializer(data=t775161hval_data)
+         if t775161hval_serializer.is_valid():
+             t775161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v775161hvals = V775161hvals.objects.all()
-         v775161hval_serializer=V775161hvalSerializer(v775161hvals,many=True)
-         return JsonResponse(v775161hval_serializer.data,safe=False)
+         t775161hvals = T775161hvals.objects.all()
+         t775161hval_serializer=T775161hvalSerializer(t775161hvals,many=True)
+         return JsonResponse(t775161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v775161hval_data=JSONParser().parse(request)
-         v775161hval=V775161hvals.objects.get(id_agua_aniadida_val=v775161hval_data['id_agua_aniadida_val'])
-         v775161hval_serializer=V1073161hSerializer(v775161hval,data=v775161hval_data)
-         if v775161hval_serializer.is_valid():
-            v775161hval_serializer.save()
+         t775161hval_data=JSONParser().parse(request)
+         t775161hval=T775161hvals.objects.get(id_agua_aniadida_val=t775161hval_data['id_agua_aniadida_val'])
+         t775161hval_serializer=T1073161hSerializer(t775161hval,data=t775161hval_data)
+         if t775161hval_serializer.is_valid():
+            t775161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v775161hval=V775161hvals.objects.get(id_agua_aniadida_val=id)
-        v775161hval.delete()
+        t775161hval=T775161hvals.objects.get(id_agua_aniadida_val=id)
+        t775161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
-class V91161hsApi(View):
+class T91161hsView(View):
       
     def post(self,request):
          
-         v91161h_data=JSONParser().parse(request)
-         v91161h_serializer=V91161hSerializer(data=v91161h_data)
-         if v91161h_serializer.is_valid():
-             v91161h_serializer.save()
+         t91161h_data=JSONParser().parse(request)
+         t91161h_serializer=T91161hSerializer(data=t91161h_data)
+         if t91161h_serializer.is_valid():
+             t91161h_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v91161hs = V91161hs.objects.all()
-         v91161h_serializer=V91161hSerializer(v91161hs,many=True)
-         return JsonResponse(v91161h_serializer.data,safe=False)
+         t91161hs = T91161hs.objects.all()
+         t91161h_serializer=T91161hSerializer(t91161hs,many=True)
+         return JsonResponse(t91161h_serializer.data,safe=False)
 
     def put(self,request):
-         v91161h_data=JSONParser().parse(request)
-         v91161h=V91161hs.objects.get(id_humedad_rltva=v91161h_data['id_humedad_rltva'])
-         v91161h_serializer=V1073161hSerializer(v91161h,data=v91161h_data)
-         if v91161h_serializer.is_valid():
-            v91161h_serializer.save()
+         t91161h_data=JSONParser().parse(request)
+         t91161h=T91161hs.objects.get(id_humedad_rltta=t91161h_data['id_humedad_rltta'])
+         t91161h_serializer=T1073161hSerializer(t91161h,data=t91161h_data)
+         if t91161h_serializer.is_valid():
+            t91161h_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v91161h=V91161hs.objects.get(id_humedad_rltva=id)
-        v91161h.delete()
+        t91161h=T91161hs.objects.get(id_humedad_rltta=id)
+        t91161h.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
 
 
 
-class V91161hvalsApi(View):
+class T91161hvalsView(View):
       
     def post(self,request):
          
-         v91161hval_data=JSONParser().parse(request)
-         v91161hval_serializer=V91161hvalSerializer(data=v91161hval_data)
-         if v91161hval_serializer.is_valid():
-             v91161hval_serializer.save()
+         t91161hval_data=JSONParser().parse(request)
+         t91161hval_serializer=T91161hvalSerializer(data=t91161hval_data)
+         if t91161hval_serializer.is_valid():
+             t91161hval_serializer.sate()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
     def get(self,request):
-         v91161hvals = V91161hvals.objects.all()
-         v91161hval_serializer=V91161hvalSerializer(v91161hvals,many=True)
-         return JsonResponse(v91161hval_serializer.data,safe=False)
+         t91161hvals = T91161hvals.objects.all()
+         t91161hval_serializer=T91161hvalSerializer(t91161hvals,many=True)
+         return JsonResponse(t91161hval_serializer.data,safe=False)
 
     def put(self,request):
-         v91161hval_data=JSONParser().parse(request)
-         v91161hval=V91161hvals.objects.get(id_humedad_rltva_val=v91161hval_data['id_humedad_rltva_val'])
-         v91161hval_serializer=V1073161hSerializer(v91161hval,data=v91161hval_data)
-         if v91161hval_serializer.is_valid():
-            v91161hval_serializer.save()
+         t91161hval_data=JSONParser().parse(request)
+         t91161hval=T91161hvals.objects.get(id_humedad_rltta_val=t91161hval_data['id_humedad_rltta_val'])
+         t91161hval_serializer=T1073161hSerializer(t91161hval,data=t91161hval_data)
+         if t91161hval_serializer.is_valid():
+            t91161hval_serializer.sate()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
     def delete(self,request,id):
-        v91161hval=V91161hvals.objects.get(id_humedad_rltva_val=id)
-        v91161hval.delete()
+        t91161hval=T91161hvals.objects.get(id_humedad_rltta_val=id)
+        t91161hval.delete()
         return JsonResponse("Deleted Successfully",safe=False)  
+
+class CalView(View):
+
+    def calevapo():
+         
+
+        return JsonResponse("hola")
+
+
+  
+
 
    
 

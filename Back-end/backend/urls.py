@@ -5,11 +5,11 @@ from rest_framework.views import APIView
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 urlpatterns=[
 
-      url(r'^v1073161h$',csrf_exempt(views.V1073161hsApi.as_view()),name='v1073161h'),
-      url(r'^v1073161h/(?P<id>\d+)$',csrf_exempt(views.V1073161hsApi.as_view()),name='v1073161h'),
-      url(r'^v29311hval$',csrf_exempt(views.V29311hvalsApi.as_view()),name='v29311hval'),
-      url(r'^v29311hval/(?P<id>\d+)$',csrf_exempt(views.V29311hvalsApi.as_view()),name='v29311hval'),
-      url(r'^v29311h$',csrf_exempt(views.V29311hsApi.as_view()),name='v29311h'),
-      url(r'^v29311h/(?P<id>\d+)$',csrf_exempt(views.V29311hsApi.as_view()),name='v29311h'),   
-  
+      url(r'^t1073161h$',csrf_exempt(views.T1073161hsView.as_view()),name='t1073161h'),
+      url(r'^t1073161h/(?P<id>\d+)$',csrf_exempt(views.T1073161hsView.as_view()),name='t1073161h'),
+      url(r'^t29311hval$',csrf_exempt(views.T29311hvalsView.as_view()),name='t29311hval'),
+      url(r'^t29311hval/(?P<id>\d+)$',csrf_exempt(views.T29311hvalsView.as_view()),name='t29311hval'),
+      url(r'^t29311h$',csrf_exempt(views.T29311hsView.as_view()),name='t29311h'),
+      url(r'^t29311h/(?P<id>\d+)$',csrf_exempt(views.T29311hsView.as_view()),name='t29311h'),   
+      url(r'^caleva$',csrf_exempt(views.CalView.as_view()),name='caleva'),
 ]
