@@ -13,7 +13,7 @@ from django.views.generic import View
 
 class Calculos():
      def sumar(self):
-          return(5+3)
+          return(5+4)
 
 class DatosCalculos():
 
@@ -23,10 +23,10 @@ class DatosCalculos():
           
 class T1073161hsView(View):
      
-     datoscal = DatosCalculos()
-     print(datoscal.resul())
       
      def post(self,request):
+          datoscal = Calculos()
+          print(datoscal.sumar())
           t1073161h_data=JSONParser().parse(request)
           t1073161h_serializer=T1073161hSerializer(data=t1073161h_data)
           if t1073161h_serializer.is_valid():
