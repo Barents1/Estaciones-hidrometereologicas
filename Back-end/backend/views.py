@@ -12,6 +12,7 @@ from django.views.generic import View
 
 
 class Calculos():
+     
      def sumar(self):
           return(5+4)
 
