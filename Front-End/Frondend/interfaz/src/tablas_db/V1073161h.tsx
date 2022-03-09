@@ -171,7 +171,7 @@ export class V1073161h extends Component<IProps,IState> {
     }
     refreshList(){
 
-        fetch(variables.API_URL+'v1073161h')
+        fetch(variables.API_URL+'t1073161h')
         .then(response=>response.json())
         .then(data=>{
             this.setState({v1073161hs:data});
@@ -240,7 +240,7 @@ export class V1073161h extends Component<IProps,IState> {
 
 
     updateClick(){
-        fetch(variables.API_URL+'v1073161h',{
+        fetch(variables.API_URL+'t1073161h',{
             method:'PUT',
             headers:{
                 'Accept':'application/json',
@@ -267,7 +267,7 @@ export class V1073161h extends Component<IProps,IState> {
 
     deleteClick(id:number){
         if(window.confirm('Esta seguro de eliminar el valor?')){
-        fetch(variables.API_URL+'v1073161h/'+id,{
+        fetch(variables.API_URL+'t1073161h/'+id,{
             method:'DELETE',
             headers:{
                 'Accept':'application/json',

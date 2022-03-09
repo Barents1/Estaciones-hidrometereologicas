@@ -1,3 +1,4 @@
+from decimal import Decimal
 from pyexpat import model
 from re import template
 from urllib import response
@@ -12,43 +13,59 @@ from django.http import HttpResponse
 from django.views.generic import View
 
 
-class CalculosView():
-    def suma_valores_fk():
-     #    return (T1073161hs.valor + T1073161hvals.valor )
-        return (3 + 5 )
+class Calculos():
 
-class saveDatosCalculos():
+     
+     def sumar(selfm,fecha):
 
-     def resul():
-          total = CalculosView()
-     # super (T1087161hs.valor,total).save()
-          return total()
+          # suma=T1073161hs.objects.filter(id_temp_int_baro=8).values_list('valor',flat=True)
+          # suma2=T1073161hs.objects.get(suma='valor')
+          # suma2=suma.valor
+          # return(suma2+4)
 
-class T1073161hsView(View):
-      
-     resp=saveDatosCalculos() 
-     print(resp.resul())
-     def post(self,request):
+          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
+          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
+          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
+          valor=0.0
+
+          for a in suma:
+               valor=a['valor']
+               
+          return(valor+4)
+
+
+class DatosCalculos():
+
+     def resul(self):
+          calcular = Calculos()
+          calcular.sumar()
           
+class T1073161hsView(View):
+     
+      
+     def post(self,request):
+          datoscal = Calculos()
+          print(datoscal.sumar())
           t1073161h_data=JSONParser().parse(request)
           t1073161h_serializer=T1073161hSerializer(data=t1073161h_data)
           if t1073161h_serializer.is_valid():
-               t1073161h_serializer.sate()
+               t1073161h_serializer.save()
                return JsonResponse('Se agrrego correctamente',safe=False)
           return   JsonResponse('No se pudo agregar ',safe=False) 
      
      def get(self,request):
+          
           t1073161hs = T1073161hs.objects.all()
           t1073161h_serializer=T1073161hSerializer(t1073161hs,many=True)
           return JsonResponse(t1073161h_serializer.data,safe=False)
-          
+
 
      def put(self,request):
           t1073161h_data=JSONParser().parse(request)
           t1073161h=T1073161hs.objects.get(id_temp_int_baro=t1073161h_data['id_temp_int_baro'])
           t1073161h_serializer=T1073161hSerializer(t1073161h,data=t1073161h_data)
           if t1073161h_serializer.is_valid():
-               t1073161h_serializer.sate()
+               t1073161h_serializer.save()
                return JsonResponse("Updated Successfully",safe=False)
           return JsonResponse("Failed to Update")
 
@@ -56,19 +73,14 @@ class T1073161hsView(View):
           t1073161h=T1073161hs.objects.get(id_temp_int_baro=id)
           t1073161h.delete()
           return JsonResponse("Deleted Successfully",safe=False)
-
-
-
-    
      
- 
 class T1073161hvalsView(View):
      
      def post(self,request):
           t1073161hval_data=JSONParser().parse(request)
           t1073161hval_serializer=T1073161hvalSerializer(data=t1073161hval_data)
           if t1073161hval_serializer.is_valid():
-               t1073161hval_serializer.sate()
+               t1073161hval_serializer.save()
                return JsonResponse('Se agrrego correctamente',safe=False)
           return   JsonResponse('No se pudo agregar ',safe=False) 
      
@@ -82,7 +94,7 @@ class T1073161hvalsView(View):
           t1073161hval=T1073161hvals.objects.get(id_temp_int_baro_val=t1073161hval_data['id_temp_int_baro_val'])
           t1073161hval_serializer=T1073161hSerializer(t1073161hval,data=t1073161hval_data)
           if t1073161hval_serializer.is_valid():
-               t1073161hval_serializer.sate()
+               t1073161hval_serializer.save()
                return JsonResponse("Updated Successfully",safe=False)
           return JsonResponse("Failed to Update")
 
@@ -98,7 +110,7 @@ class T1087161hsView(View):
          t1087161h_data=JSONParser().parse(request)
          t1087161h_serializer=T1087161hSerializer(data=t1087161h_data)
          if t1087161h_serializer.is_valid():
-             t1087161h_serializer.sate()
+             t1087161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -112,7 +124,7 @@ class T1087161hsView(View):
          t1087161h=T1087161hs.objects.get(id_pres_corre=t1087161h_data['id_temp_int_baro_val'])
          t1087161h_serializer=T1087161hSerializer(t1087161h,data=t1087161h_data)
          if t1087161h_serializer.is_valid():
-            t1087161h_serializer.sate()
+            t1087161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -128,7 +140,7 @@ class T1087161hvalsView(View):
          t1087161hval_data=JSONParser().parse(request)
          t1087161hval_serializer=T1087161hvalSerializer(data=t1087161hval_data)
          if t1087161hval_serializer.is_valid():
-             t1087161hval_serializer.sate()
+             t1087161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -142,7 +154,7 @@ class T1087161hvalsView(View):
          t1087161hval=T1087161hvals.objects.get(id_pres_corre_val=t1087161hval_data['id_temp_int_baro_val'])
          t1087161hval_serializer=T1073161hSerializer(t1087161hval,data=t1087161hval_data)
          if t1087161hval_serializer.is_valid():
-            t1087161hval_serializer.sate()
+            t1087161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -158,7 +170,7 @@ class T1097161hsView(View):
          t1097161h_data=JSONParser().parse(request)
          t1097161h_serializer=T1097161hSerializer(data=t1097161h_data)
          if t1097161h_serializer.is_valid():
-             t1097161h_serializer.sate()
+             t1097161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -172,7 +184,7 @@ class T1097161hsView(View):
          t1097161h=T1097161hs.objects.get(id_pres_cont=t1097161h_data['id_pres_cont'])
          t1097161h_serializer=T1073161hSerializer(t1097161h,data=t1097161h_data)
          if t1097161h_serializer.is_valid():
-            t1097161h_serializer.sate()
+            t1097161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -189,7 +201,7 @@ class T1097161hvalsView(View):
          t1097161hval_data=JSONParser().parse(request)
          t1097161hval_serializer=T1097161hvalSerializer(data=t1097161hval_data)
          if t1097161hval_serializer.is_valid():
-             t1097161hval_serializer.sate()
+             t1097161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -203,7 +215,7 @@ class T1097161hvalsView(View):
          t1097161hval=T1097161hvals.objects.get(id_pres_cont_val=t1097161hval_data['id_pres_cont_val'])
          t1097161hval_serializer=T1073161hSerializer(t1097161hval,data=t1097161hval_data)
          if t1097161hval_serializer.is_valid():
-            t1097161hval_serializer.sate()
+            t1097161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -220,7 +232,7 @@ class T1263011hsView(View):
          t1263011h_data=JSONParser().parse(request)
          t1263011h_serializer=T1263011hSerializer(data=t1263011h_data)
          if t1263011h_serializer.is_valid():
-             t1263011h_serializer.sate()
+             t1263011h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -234,7 +246,7 @@ class T1263011hsView(View):
          t1263011h=T1263011hs.objects.get(id_caudal_max_hor=t1263011h_data['id_caudal_max_hor'])
          t1263011h_serializer=T1073161hSerializer(t1263011h,data=t1263011h_data)
          if t1263011h_serializer.is_valid():
-            t1263011h_serializer.sate()
+            t1263011h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -251,7 +263,7 @@ class T1263011hvalsView(View):
          t1263011hval_data=JSONParser().parse(request)
          t1263011hval_serializer=T1263011hvalSerializer(data=t1263011hval_data)
          if t1263011hval_serializer.is_valid():
-             t1263011hval_serializer.sate()
+             t1263011hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -265,7 +277,7 @@ class T1263011hvalsView(View):
          t1263011hval=T1263011hvals.objects.get(id_caudal_max_hor_val=t1263011hval_data['id_caudal_max_hor_val'])
          t1263011hval_serializer=T1073161hSerializer(t1263011hval,data=t1263011hval_data)
          if t1263011hval_serializer.is_valid():
-            t1263011hval_serializer.sate()
+            t1263011hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -282,7 +294,7 @@ class T12630161hsView(View):
          t12630161h_data=JSONParser().parse(request)
          t12630161h_serializer=T12630161hSerializer(data=t12630161h_data)
          if t12630161h_serializer.is_valid():
-             t12630161h_serializer.sate()
+             t12630161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -296,7 +308,7 @@ class T12630161hsView(View):
          t12630161h=T12630161hs.objects.get(id_caudal_ins_hor=t12630161h_data['id_caudal_ins_hor'])
          t12630161h_serializer=T1073161hSerializer(t12630161h,data=t12630161h_data)
          if t12630161h_serializer.is_valid():
-            t12630161h_serializer.sate()
+            t12630161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -312,7 +324,7 @@ class T12630161hvalsView(View):
          t12630161hval_data=JSONParser().parse(request)
          t12630161hval_serializer=T12630161hvalSerializer(data=t12630161hval_data)
          if t12630161hval_serializer.is_valid():
-             t12630161hval_serializer.sate()
+             t12630161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -326,7 +338,7 @@ class T12630161hvalsView(View):
          t12630161hval=T12630161hvals.objects.get(id_caudal_ins_hor_val=t12630161hval_data['id_caudal_ins_hor_val'])
          t12630161hval_serializer=T1073161hSerializer(t12630161hval,data=t12630161hval_data)
          if t12630161hval_serializer.is_valid():
-            t12630161hval_serializer.sate()
+            t12630161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -343,7 +355,7 @@ class T1263021hsView(View):
          t1263021h_data=JSONParser().parse(request)
          t1263021h_serializer=T1263021hSerializer(data=t1263021h_data)
          if t1263021h_serializer.is_valid():
-             t1263021h_serializer.sate()
+             t1263021h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -357,7 +369,7 @@ class T1263021hsView(View):
          t1263021h=T1263021hs.objects.get(id_caudal_min_hor=t1263021h_data['id_caudal_min_hor'])
          t1263021h_serializer=T1073161hSerializer(t1263021h,data=t1263021h_data)
          if t1263021h_serializer.is_valid():
-            t1263021h_serializer.sate()
+            t1263021h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -375,7 +387,7 @@ class T1263021hvalsView(View):
          t1263021hval_data=JSONParser().parse(request)
          t1263021hval_serializer=T1263021hvalSerializer(data=t1263021hval_data)
          if t1263021hval_serializer.is_valid():
-             t1263021hval_serializer.sate()
+             t1263021hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -389,7 +401,7 @@ class T1263021hvalsView(View):
          t1263021hval=T1263021hvals.objects.get(id_caudal_min_hor_val=t1263021hval_data['id_caudal_min_hor_val'])
          t1263021hval_serializer=T1073161hSerializer(t1263021hval,data=t1263021hval_data)
          if t1263021hval_serializer.is_valid():
-            t1263021hval_serializer.sate()
+            t1263021hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -406,7 +418,7 @@ class T1263041hsView(View):
          t1263041h_data=JSONParser().parse(request)
          t1263041h_serializer=T1263041hSerializer(data=t1263041h_data)
          if t1263041h_serializer.is_valid():
-             t1263041h_serializer.sate()
+             t1263041h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -420,7 +432,7 @@ class T1263041hsView(View):
          t1263041h=T1263041hs.objects.get(id_caudal_prom_hor=t1263041h_data['id_caudal_prom_hor'])
          t1263041h_serializer=T1073161hSerializer(t1263041h,data=t1263041h_data)
          if t1263041h_serializer.is_valid():
-            t1263041h_serializer.sate()
+            t1263041h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -437,7 +449,7 @@ class T1263041hvalsView(View):
          t1263041hval_data=JSONParser().parse(request)
          t1263041hval_serializer=T1263041hvalSerializer(data=t1263041hval_data)
          if t1263041hval_serializer.is_valid():
-             t1263041hval_serializer.sate()
+             t1263041hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -451,7 +463,7 @@ class T1263041hvalsView(View):
          t1263041hval=T1263041hvals.objects.get(id_caudal_prom_hor_val=t1263041hval_data['id_caudal_prom_hor_val'])
          t1263041hval_serializer=T1073161hSerializer(t1263041hval,data=t1263041hval_data)
          if t1263041hval_serializer.is_valid():
-            t1263041hval_serializer.sate()
+            t1263041hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -469,7 +481,7 @@ class T141011hsView(View):
          t141011h_data=JSONParser().parse(request)
          t141011h_serializer=T141011hSerializer(data=t141011h_data)
          if t141011h_serializer.is_valid():
-             t141011h_serializer.sate()
+             t141011h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -483,7 +495,7 @@ class T141011hsView(View):
          t141011h=T141011hs.objects.get(id_nitelagua_max_hor=t141011h_data['id_nitelagua_max_hor'])
          t141011h_serializer=T1073161hSerializer(t141011h,data=t141011h_data)
          if t141011h_serializer.is_valid():
-            t141011h_serializer.sate()
+            t141011h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -502,7 +514,7 @@ class T141011hvalsView(View):
          t141011hval_data=JSONParser().parse(request)
          t141011hval_serializer=T141011hvalSerializer(data=t141011hval_data)
          if t141011hval_serializer.is_valid():
-             t141011hval_serializer.sate()
+             t141011hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -516,7 +528,7 @@ class T141011hvalsView(View):
          t141011hval=T141011hvals.objects.get(id_nitelagua_max_hor_val=t141011hval_data['id_nitelagua_max_hor_val'])
          t141011hval_serializer=T1073161hSerializer(t141011hval,data=t141011hval_data)
          if t141011hval_serializer.is_valid():
-            t141011hval_serializer.sate()
+            t141011hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -533,7 +545,7 @@ class T1410161hsView(View):
          t1410161h_data=JSONParser().parse(request)
          t1410161h_serializer=T1410161hSerializer(data=t1410161h_data)
          if t1410161h_serializer.is_valid():
-             t1410161h_serializer.sate()
+             t1410161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -547,7 +559,7 @@ class T1410161hsView(View):
          t1410161h=T1410161hs.objects.get(id_nitelagua_ins_hor=t1410161h_data['id_nitelagua_ins_hor'])
          t1410161h_serializer=T1073161hSerializer(t1410161h,data=t1410161h_data)
          if t1410161h_serializer.is_valid():
-            t1410161h_serializer.sate()
+            t1410161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -564,7 +576,7 @@ class T1410161hvalsView(View):
          t1410161hval_data=JSONParser().parse(request)
          t1410161hval_serializer=T1410161hvalSerializer(data=t1410161hval_data)
          if t1410161hval_serializer.is_valid():
-             t1410161hval_serializer.sate()
+             t1410161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -578,7 +590,7 @@ class T1410161hvalsView(View):
          t1410161hval=T1410161hvals.objects.get(id_nitelagua_ins_hor_val=t1410161hval_data['id_nitelagua_ins_hor_val'])
          t1410161hval_serializer=T1073161hSerializer(t1410161hval,data=t1410161hval_data)
          if t1410161hval_serializer.is_valid():
-            t1410161hval_serializer.sate()
+            t1410161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -595,7 +607,7 @@ class T141021hsView(View):
          t141021h_data=JSONParser().parse(request)
          t141021h_serializer=T141021hSerializer(data=t141021h_data)
          if t141021h_serializer.is_valid():
-             t141021h_serializer.sate()
+             t141021h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -609,7 +621,7 @@ class T141021hsView(View):
          t141021h=T141021hs.objects.get(id_nitelagua_min_hor=t141021h_data['id_nitelagua_min_hor'])
          t141021h_serializer=T1073161hSerializer(t141021h,data=t141021h_data)
          if t141021h_serializer.is_valid():
-            t141021h_serializer.sate()
+            t141021h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -626,7 +638,7 @@ class T141021hvalsView(View):
          t141021hval_data=JSONParser().parse(request)
          t141021hval_serializer=T141021hvalSerializer(data=t141021hval_data)
          if t141021hval_serializer.is_valid():
-             t141021hval_serializer.sate()
+             t141021hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -640,7 +652,7 @@ class T141021hvalsView(View):
          t141021hval=T141021hvals.objects.get(id_nitelagua_min_hor_val=t141021hval_data['id_nitelagua_min_hor_val'])
          t141021hval_serializer=T1073161hSerializer(t141021hval,data=t141021hval_data)
          if t141021hval_serializer.is_valid():
-            t141021hval_serializer.sate()
+            t141021hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -658,7 +670,7 @@ class T141041hsView(View):
          t141041h_data=JSONParser().parse(request)
          t141041h_serializer=T141041hSerializer(data=t141041h_data)
          if t141041h_serializer.is_valid():
-             t141041h_serializer.sate()
+             t141041h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -672,7 +684,7 @@ class T141041hsView(View):
          t141041h=T141041hs.objects.get(id_nitelagua_prom_hor=t141041h_data['id_nitelagua_prom_hor'])
          t141041h_serializer=T1073161hSerializer(t141041h,data=t141041h_data)
          if t141041h_serializer.is_valid():
-            t141041h_serializer.sate()
+            t141041h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -688,7 +700,7 @@ class T141041hvalsView(View):
          t141041hval_data=JSONParser().parse(request)
          t141041hval_serializer=T141041hvalSerializer(data=t141041hval_data)
          if t141041hval_serializer.is_valid():
-             t141041hval_serializer.sate()
+             t141041hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -702,7 +714,7 @@ class T141041hvalsView(View):
          t141041hval=T141041hvals.objects.get(id_nitelagua_prom_hor_val=t141041hval_data['id_nitelagua_prom_hor_val'])
          t141041hval_serializer=T1073161hSerializer(t141041hval,data=t141041hval_data)
          if t141041hval_serializer.is_valid():
-            t141041hval_serializer.sate()
+            t141041hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -719,7 +731,7 @@ class T1714161hsView(View):
          t1714161h_data=JSONParser().parse(request)
          t1714161h_serializer=T1714161hSerializer(data=t1714161h_data)
          if t1714161h_serializer.is_valid():
-             t1714161h_serializer.sate()
+             t1714161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -733,7 +745,7 @@ class T1714161hsView(View):
          t1714161h=T1714161hs.objects.get(id_prec_1h=t1714161h_data['id_prec_1h'])
          t1714161h_serializer=T1073161hSerializer(t1714161h,data=t1714161h_data)
          if t1714161h_serializer.is_valid():
-            t1714161h_serializer.sate()
+            t1714161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -750,7 +762,7 @@ class T1714161hvalsView(View):
          t1714161hval_data=JSONParser().parse(request)
          t1714161hval_serializer=T1714161hvalSerializer(data=t1714161hval_data)
          if t1714161hval_serializer.is_valid():
-             t1714161hval_serializer.sate()
+             t1714161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -764,7 +776,7 @@ class T1714161hvalsView(View):
          t1714161hval=T1714161hvals.objects.get(id_prec_1h_val=t1714161hval_data['id_prec_1h_val'])
          t1714161hval_serializer=T1073161hSerializer(t1714161hval,data=t1714161hval_data)
          if t1714161hval_serializer.is_valid():
-            t1714161hval_serializer.sate()
+            t1714161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -781,7 +793,7 @@ class T171481hsView(View):
          t171481h_data=JSONParser().parse(request)
          t171481h_serializer=T171481hSerializer(data=t171481h_data)
          if t171481h_serializer.is_valid():
-             t171481h_serializer.sate()
+             t171481h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -795,7 +807,7 @@ class T171481hsView(View):
          t171481h=T171481hs.objects.get(id_prec=t171481h_data['id_prec'])
          t171481h_serializer=T1073161hSerializer(t171481h,data=t171481h_data)
          if t171481h_serializer.is_valid():
-            t171481h_serializer.sate()
+            t171481h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -812,7 +824,7 @@ class T171481hvalsView(View):
          t171481hval_data=JSONParser().parse(request)
          t171481hval_serializer=T171481hvalSerializer(data=t171481hval_data)
          if t171481hval_serializer.is_valid():
-             t171481hval_serializer.sate()
+             t171481hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -826,7 +838,7 @@ class T171481hvalsView(View):
          t171481hval=T171481hvals.objects.get(id_prec_val=t171481hval_data['id_prec_val'])
          t171481hval_serializer=T1073161hSerializer(t171481hval,data=t171481hval_data)
          if t171481hval_serializer.is_valid():
-            t171481hval_serializer.sate()
+            t171481hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -843,7 +855,7 @@ class T187161hsView(View):
          t187161h_data=JSONParser().parse(request)
          t187161h_serializer=T187161hSerializer(data=t187161h_data)
          if t187161h_serializer.is_valid():
-             t187161h_serializer.sate()
+             t187161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -857,7 +869,7 @@ class T187161hsView(View):
          t187161h=T187161hs.objects.get(id_presion=t187161h_data['id_presion'])
          t187161h_serializer=T1073161hSerializer(t187161h,data=t187161h_data)
          if t187161h_serializer.is_valid():
-            t187161h_serializer.sate()
+            t187161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -874,7 +886,7 @@ class T187161hvalsView(View):
          t187161hval_data=JSONParser().parse(request)
          t187161hval_serializer=T187161hvalSerializer(data=t187161hval_data)
          if t187161hval_serializer.is_valid():
-             t187161hval_serializer.sate()
+             t187161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -888,7 +900,7 @@ class T187161hvalsView(View):
          t187161hval=T187161hvals.objects.get(id_presion_val=t187161hval_data['id_presion_val'])
          t187161hval_serializer=T1073161hSerializer(t187161hval,data=t187161hval_data)
          if t187161hval_serializer.is_valid():
-            t187161hval_serializer.sate()
+            t187161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -904,7 +916,7 @@ class T272981hsView(View):
          t272981h_data=JSONParser().parse(request)
          t272981h_serializer=T272981hSerializer(data=t272981h_data)
          if t272981h_serializer.is_valid():
-             t272981h_serializer.sate()
+             t272981h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -918,7 +930,7 @@ class T272981hsView(View):
          t272981h=T272981hs.objects.get(id_tiento_rec=t272981h_data['id_tiento_rec'])
          t272981h_serializer=T1073161hSerializer(t272981h,data=t272981h_data)
          if t272981h_serializer.is_valid():
-            t272981h_serializer.sate()
+            t272981h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -935,7 +947,7 @@ class T272981hvalsView(View):
          t272981hval_data=JSONParser().parse(request)
          t272981hval_serializer=T272981hvalSerializer(data=t272981hval_data)
          if t272981hval_serializer.is_valid():
-             t272981hval_serializer.sate()
+             t272981hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -949,7 +961,7 @@ class T272981hvalsView(View):
          t272981hval=T272981hvals.objects.get(id_tiento_rec_val=t272981hval_data['id_tiento_rec_val'])
          t272981hval_serializer=T1073161hSerializer(t272981hval,data=t272981hval_data)
          if t272981hval_serializer.is_valid():
-            t272981hval_serializer.sate()
+            t272981hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -966,7 +978,7 @@ class T29311hsView(View):
          t29311h_data=JSONParser().parse(request)
          t29311h_serializer=T29311hSerializer(data=t29311h_data)
          if t29311h_serializer.is_valid():
-             t29311h_serializer.sate()
+             t29311h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -980,7 +992,7 @@ class T29311hsView(View):
          t29311h=T29311hs.objects.get(id_temp_aire_max=t29311h_data['id_temp_aire_max'])
          t29311h_serializer=T1073161hSerializer(t29311h,data=t29311h_data)
          if t29311h_serializer.is_valid():
-            t29311h_serializer.sate()
+            t29311h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -997,7 +1009,7 @@ class T29311hvalsView(View):
          t29311hval_data=JSONParser().parse(request)
          t29311hval_serializer=T29311hvalSerializer(data=t29311hval_data)
          if t29311hval_serializer.is_valid():
-             t29311hval_serializer.sate()
+             t29311hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1011,7 +1023,7 @@ class T29311hvalsView(View):
          t29311hval=T29311hvals.objects.get(id_temp_aire_max_val=t29311hval_data['id_temp_aire_max_val'])
          t29311hval_serializer=T1073161hSerializer(t29311hval,data=t29311hval_data)
          if t29311hval_serializer.is_valid():
-            t29311hval_serializer.sate()
+            t29311hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1028,7 +1040,7 @@ class T29321hsView(View):
          t29321h_data=JSONParser().parse(request)
          t29321h_serializer=T29321hSerializer(data=t29321h_data)
          if t29321h_serializer.is_valid():
-             t29321h_serializer.sate()
+             t29321h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1042,7 +1054,7 @@ class T29321hsView(View):
          t29321h=T29321hs.objects.get(id_temp_aire_min=t29321h_data['id_temp_aire_min'])
          t29321h_serializer=T1073161hSerializer(t29321h,data=t29321h_data)
          if t29321h_serializer.is_valid():
-            t29321h_serializer.sate()
+            t29321h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1058,7 +1070,7 @@ class T29321hvalsView(View):
          t29321hval_data=JSONParser().parse(request)
          t29321hval_serializer=T29321hvalSerializer(data=t29321hval_data)
          if t29321hval_serializer.is_valid():
-             t29321hval_serializer.sate()
+             t29321hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1072,7 +1084,7 @@ class T29321hvalsView(View):
          t29321hval=T29321hvals.objects.get(id_temp_aire_min_val=t29321hval_data['id_temp_aire_min_val'])
          t29321hval_serializer=T1073161hSerializer(t29321hval,data=t29321hval_data)
          if t29321hval_serializer.is_valid():
-            t29321hval_serializer.sate()
+            t29321hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1089,7 +1101,7 @@ class T303161hsView(View):
          t303161h_data=JSONParser().parse(request)
          t303161h_serializer=T303161hSerializer(data=t303161h_data)
          if t303161h_serializer.is_valid():
-             t303161h_serializer.sate()
+             t303161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1103,7 +1115,7 @@ class T303161hsView(View):
          t303161h=T303161hs.objects.get(id_temp_agua_mar=t303161h_data['id_temp_agua_mar'])
          t303161h_serializer=T1073161hSerializer(t303161h,data=t303161h_data)
          if t303161h_serializer.is_valid():
-            t303161h_serializer.sate()
+            t303161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1119,7 +1131,7 @@ class T303161hvalsView(View):
          t303161hval_data=JSONParser().parse(request)
          t303161hval_serializer=T303161hvalSerializer(data=t303161hval_data)
          if t303161hval_serializer.is_valid():
-             t303161hval_serializer.sate()
+             t303161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1133,7 +1145,7 @@ class T303161hvalsView(View):
          t303161hval=T303161hvals.objects.get(id_temp_agua_mar_val=t303161hval_data['id_temp_agua_mar_val'])
          t303161hval_serializer=T1073161hSerializer(t303161hval,data=t303161hval_data)
          if t303161hval_serializer.is_valid():
-            t303161hval_serializer.sate()
+            t303161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1150,7 +1162,7 @@ class T42161hsView(View):
          t42161h_data=JSONParser().parse(request)
          t42161h_serializer=T42161hSerializer(data=t42161h_data)
          if t42161h_serializer.is_valid():
-             t42161h_serializer.sate()
+             t42161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1164,7 +1176,7 @@ class T42161hsView(View):
          t42161h=T42161hs.objects.get(id_tiento_dir=t42161h_data['id_tiento_dir'])
          t42161h_serializer=T1073161hSerializer(t42161h,data=t42161h_data)
          if t42161h_serializer.is_valid():
-            t42161h_serializer.sate()
+            t42161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1180,7 +1192,7 @@ class T42161hvalsView(View):
          t42161hval_data=JSONParser().parse(request)
          t42161hval_serializer=T42161hvalSerializer(data=t42161hval_data)
          if t42161hval_serializer.is_valid():
-             t42161hval_serializer.sate()
+             t42161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1194,7 +1206,7 @@ class T42161hvalsView(View):
          t42161hval=T42161hvals.objects.get(id_tiento_dir_val=t42161hval_data['id_tiento_dir_val'])
          t42161hval_serializer=T1073161hSerializer(t42161hval,data=t42161hval_data)
          if t42161hval_serializer.is_valid():
-            t42161hval_serializer.sate()
+            t42161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1211,7 +1223,7 @@ class T557161hsView(View):
          t557161h_data=JSONParser().parse(request)
          t557161h_serializer=T557161hSerializer(data=t557161h_data)
          if t557161h_serializer.is_valid():
-             t557161h_serializer.sate()
+             t557161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1225,7 +1237,7 @@ class T557161hsView(View):
          t557161h=T557161hs.objects.get(id_pres_red=t557161h_data['id_pres_red'])
          t557161h_serializer=T1073161hSerializer(t557161h,data=t557161h_data)
          if t557161h_serializer.is_valid():
-            t557161h_serializer.sate()
+            t557161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1242,7 +1254,7 @@ class T557161hvalsView(View):
          t557161hval_data=JSONParser().parse(request)
          t557161hval_serializer=T557161hvalSerializer(data=t557161hval_data)
          if t557161hval_serializer.is_valid():
-             t557161hval_serializer.sate()
+             t557161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1256,7 +1268,7 @@ class T557161hvalsView(View):
          t557161hval=T557161hvals.objects.get(id_pres_red_val=t557161hval_data['id_pres_red_val'])
          t557161hval_serializer=T1073161hSerializer(t557161hval,data=t557161hval_data)
          if t557161hval_serializer.is_valid():
-            t557161hval_serializer.sate()
+            t557161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1273,7 +1285,7 @@ class T573161hsView(View):
          t573161h_data=JSONParser().parse(request)
          t573161h_serializer=T573161hSerializer(data=t573161h_data)
          if t573161h_serializer.is_valid():
-             t573161h_serializer.sate()
+             t573161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1287,7 +1299,7 @@ class T573161hsView(View):
          t573161h=T573161hs.objects.get(id_term_seco=t573161h_data['id_term_seco'])
          t573161h_serializer=T1073161hSerializer(t573161h,data=t573161h_data)
          if t573161h_serializer.is_valid():
-            t573161h_serializer.sate()
+            t573161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1304,7 +1316,7 @@ class T573161hvalsView(View):
          t573161hval_data=JSONParser().parse(request)
          t573161hval_serializer=T573161hvalSerializer(data=t573161hval_data)
          if t573161hval_serializer.is_valid():
-             t573161hval_serializer.sate()
+             t573161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1318,7 +1330,7 @@ class T573161hvalsView(View):
          t573161hval=T573161hvals.objects.get(id_term_seco_val=t573161hval_data['id_term_seco_val'])
          t573161hval_serializer=T1073161hSerializer(t573161hval,data=t573161hval_data)
          if t573161hval_serializer.is_valid():
-            t573161hval_serializer.sate()
+            t573161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1335,7 +1347,7 @@ class T583161hsView(View):
          t583161h_data=JSONParser().parse(request)
          t583161h_serializer=T583161hSerializer(data=t583161h_data)
          if t583161h_serializer.is_valid():
-             t583161h_serializer.sate()
+             t583161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1349,7 +1361,7 @@ class T583161hsView(View):
          t583161h=T583161hs.objects.get(id_term_hmd=t583161h_data['id_term_hmd'])
          t583161h_serializer=T1073161hSerializer(t583161h,data=t583161h_data)
          if t583161h_serializer.is_valid():
-            t583161h_serializer.sate()
+            t583161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1366,7 +1378,7 @@ class T583161hvalsView(View):
          t583161hval_data=JSONParser().parse(request)
          t583161hval_serializer=T583161hvalSerializer(data=t583161hval_data)
          if t583161hval_serializer.is_valid():
-             t583161hval_serializer.sate()
+             t583161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1380,7 +1392,7 @@ class T583161hvalsView(View):
          t583161hval=T583161hvals.objects.get(id_term_hmd_val=t583161hval_data['id_term_hmd_val'])
          t583161hval_serializer=T1073161hSerializer(t583161hval,data=t583161hval_data)
          if t583161hval_serializer.is_valid():
-            t583161hval_serializer.sate()
+            t583161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1397,7 +1409,7 @@ class T597161hsView(View):
          t597161h_data=JSONParser().parse(request)
          t597161h_serializer=T597161hSerializer(data=t597161h_data)
          if t597161h_serializer.is_valid():
-             t597161h_serializer.sate()
+             t597161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1411,7 +1423,7 @@ class T597161hsView(View):
          t597161h=T597161hs.objects.get(id_tension_tapor=t597161h_data['id_tension_tapor'])
          t597161h_serializer=T1073161hSerializer(t597161h,data=t597161h_data)
          if t597161h_serializer.is_valid():
-            t597161h_serializer.sate()
+            t597161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1428,7 +1440,7 @@ class T597161hvalsView(View):
          t597161hval_data=JSONParser().parse(request)
          t597161hval_serializer=T597161hvalSerializer(data=t597161hval_data)
          if t597161hval_serializer.is_valid():
-             t597161hval_serializer.sate()
+             t597161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1442,7 +1454,7 @@ class T597161hvalsView(View):
          t597161hval=T597161hvals.objects.get(id_tension_tapor_val=t597161hval_data['id_tension_tapor_val'])
          t597161hval_serializer=T1073161hSerializer(t597161hval,data=t597161hval_data)
          if t597161hval_serializer.is_valid():
-            t597161hval_serializer.sate()
+            t597161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1459,7 +1471,7 @@ class T603161hsView(View):
          t603161h_data=JSONParser().parse(request)
          t603161h_serializer=T603161hSerializer(data=t603161h_data)
          if t603161h_serializer.is_valid():
-             t603161h_serializer.sate()
+             t603161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1473,7 +1485,7 @@ class T603161hsView(View):
          t603161h=T603161hs.objects.get(id_punto_rocio=t603161h_data['id_punto_rocio'])
          t603161h_serializer=T1073161hSerializer(t603161h,data=t603161h_data)
          if t603161h_serializer.is_valid():
-            t603161h_serializer.sate()
+            t603161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1489,7 +1501,7 @@ class T603161hvalsView(View):
          t603161hval_data=JSONParser().parse(request)
          t603161hval_serializer=T603161hvalSerializer(data=t603161hval_data)
          if t603161hval_serializer.is_valid():
-             t603161hval_serializer.sate()
+             t603161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1503,7 +1515,7 @@ class T603161hvalsView(View):
          t603161hval=T603161hvals.objects.get(id_punto_rocio_val=t603161hval_data['id_punto_rocio_val'])
          t603161hval_serializer=T1073161hSerializer(t603161hval,data=t603161hval_data)
          if t603161hval_serializer.is_valid():
-            t603161hval_serializer.sate()
+            t603161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1520,7 +1532,7 @@ class T614161hsView(View):
          t614161h_data=JSONParser().parse(request)
          t614161h_serializer=T614161hSerializer(data=t614161h_data)
          if t614161h_serializer.is_valid():
-             t614161h_serializer.sate()
+             t614161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1534,7 +1546,7 @@ class T614161hsView(View):
          t614161h=T614161hs.objects.get(id_etapo=t614161h_data['id_etapo'])
          t614161h_serializer=T1073161hSerializer(t614161h,data=t614161h_data)
          if t614161h_serializer.is_valid():
-            t614161h_serializer.sate()
+            t614161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1551,7 +1563,7 @@ class T614161hvalsView(View):
          t614161hval_data=JSONParser().parse(request)
          t614161hval_serializer=T614161hvalSerializer(data=t614161hval_data)
          if t614161hval_serializer.is_valid():
-             t614161hval_serializer.sate()
+             t614161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1565,7 +1577,7 @@ class T614161hvalsView(View):
          t614161hval=T614161hvals.objects.get(id_etapo_val=t614161hval_data['id_etapo_val'])
          t614161hval_serializer=T1073161hSerializer(t614161hval,data=t614161hval_data)
          if t614161hval_serializer.is_valid():
-            t614161hval_serializer.sate()
+            t614161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1583,7 +1595,7 @@ class T644161hsView(View):
          t644161h_data=JSONParser().parse(request)
          t644161h_serializer=T644161hSerializer(data=t644161h_data)
          if t644161h_serializer.is_valid():
-             t644161h_serializer.sate()
+             t644161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1597,7 +1609,7 @@ class T644161hsView(View):
          t644161h=T644161hs.objects.get(id_nube=t644161h_data['id_nube'])
          t644161h_serializer=T1073161hSerializer(t644161h,data=t644161h_data)
          if t644161h_serializer.is_valid():
-            t644161h_serializer.sate()
+            t644161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1614,7 +1626,7 @@ class T644161hvalsView(View):
          t644161hval_data=JSONParser().parse(request)
          t644161hval_serializer=T644161hvalSerializer(data=t644161hval_data)
          if t644161hval_serializer.is_valid():
-             t644161hval_serializer.sate()
+             t644161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1628,7 +1640,7 @@ class T644161hvalsView(View):
          t644161hval=T644161hvals.objects.get(id_nube_val=t644161hval_data['id_nube_val'])
          t644161hval_serializer=T1073161hSerializer(t644161hval,data=t644161hval_data)
          if t644161hval_serializer.is_valid():
-            t644161hval_serializer.sate()
+            t644161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1645,7 +1657,7 @@ class T674161hsView(View):
          t674161h_data=JSONParser().parse(request)
          t674161h_serializer=T674161hSerializer(data=t674161h_data)
          if t674161h_serializer.is_valid():
-             t674161h_serializer.sate()
+             t674161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1659,7 +1671,7 @@ class T674161hsView(View):
          t674161h=T674161hs.objects.get(id_nube=t674161h_data['id_nube'])
          t674161h_serializer=T1073161hSerializer(t674161h,data=t674161h_data)
          if t674161h_serializer.is_valid():
-            t674161h_serializer.sate()
+            t674161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1676,7 +1688,7 @@ class T674161hvalsView(View):
          t674161hval_data=JSONParser().parse(request)
          t674161hval_serializer=T674161hvalSerializer(data=t674161hval_data)
          if t674161hval_serializer.is_valid():
-             t674161hval_serializer.sate()
+             t674161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1690,7 +1702,7 @@ class T674161hvalsView(View):
          t674161hval=T674161hvals.objects.get(id_nube_val=t674161hval_data['id_nube_val'])
          t674161hval_serializer=T1073161hSerializer(t674161hval,data=t674161hval_data)
          if t674161hval_serializer.is_valid():
-            t674161hval_serializer.sate()
+            t674161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1708,7 +1720,7 @@ class T704161hsView(View):
          t704161h_data=JSONParser().parse(request)
          t704161h_serializer=T704161hSerializer(data=t704161h_data)
          if t704161h_serializer.is_valid():
-             t704161h_serializer.sate()
+             t704161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1722,7 +1734,7 @@ class T704161hsView(View):
          t704161h=T704161hs.objects.get(id_nube=t704161h_data['id_nube'])
          t704161h_serializer=T1073161hSerializer(t704161h,data=t704161h_data)
          if t704161h_serializer.is_valid():
-            t704161h_serializer.sate()
+            t704161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1739,7 +1751,7 @@ class T704161hvalsView(View):
          t704161hval_data=JSONParser().parse(request)
          t704161hval_serializer=T704161hvalSerializer(data=t704161hval_data)
          if t704161hval_serializer.is_valid():
-             t704161hval_serializer.sate()
+             t704161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1753,7 +1765,7 @@ class T704161hvalsView(View):
          t704161hval=T704161hvals.objects.get(id_nube_val=t704161hval_data['id_nube_val'])
          t704161hval_serializer=T1073161hSerializer(t704161hval,data=t704161hval_data)
          if t704161hval_serializer.is_valid():
-            t704161hval_serializer.sate()
+            t704161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1770,7 +1782,7 @@ class T7229161hsView(View):
          t7229161h_data=JSONParser().parse(request)
          t7229161h_serializer=T7229161hSerializer(data=t7229161h_data)
          if t7229161h_serializer.is_valid():
-             t7229161h_serializer.sate()
+             t7229161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1784,7 +1796,7 @@ class T7229161hsView(View):
          t7229161h=T7229161hs.objects.get(id_tisibilidad_hor=t7229161h_data['id_tisibilidad_hor'])
          t7229161h_serializer=T1073161hSerializer(t7229161h,data=t7229161h_data)
          if t7229161h_serializer.is_valid():
-            t7229161h_serializer.sate()
+            t7229161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1802,7 +1814,7 @@ class T7229161hvalsView(View):
          t7229161hval_data=JSONParser().parse(request)
          t7229161hval_serializer=T7229161hvalSerializer(data=t7229161hval_data)
          if t7229161hval_serializer.is_valid():
-             t7229161hval_serializer.sate()
+             t7229161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1816,7 +1828,7 @@ class T7229161hvalsView(View):
          t7229161hval=T7229161hvals.objects.get(id_tisibilidad_hor_val=t7229161hval_data['id_tisibilidad_hor_val'])
          t7229161hval_serializer=T1073161hSerializer(t7229161hval,data=t7229161hval_data)
          if t7229161hval_serializer.is_valid():
-            t7229161hval_serializer.sate()
+            t7229161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1833,7 +1845,7 @@ class T7514161hsView(View):
          t7514161h_data=JSONParser().parse(request)
          t7514161h_serializer=T7514161hSerializer(data=t7514161h_data)
          if t7514161h_serializer.is_valid():
-             t7514161h_serializer.sate()
+             t7514161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1847,7 +1859,7 @@ class T7514161hsView(View):
          t7514161h=T7514161hs.objects.get(id_reduc_tanque=t7514161h_data['id_reduc_tanque'])
          t7514161h_serializer=T1073161hSerializer(t7514161h,data=t7514161h_data)
          if t7514161h_serializer.is_valid():
-            t7514161h_serializer.sate()
+            t7514161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1864,7 +1876,7 @@ class T7514161hvalsView(View):
          t7514161hval_data=JSONParser().parse(request)
          t7514161hval_serializer=T7514161hvalSerializer(data=t7514161hval_data)
          if t7514161hval_serializer.is_valid():
-             t7514161hval_serializer.sate()
+             t7514161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1878,7 +1890,7 @@ class T7514161hvalsView(View):
          t7514161hval=T7514161hvals.objects.get(id_reduc_tanque_val=t7514161hval_data['id_reduc_tanque_val'])
          t7514161hval_serializer=T1073161hSerializer(t7514161hval,data=t7514161hval_data)
          if t7514161hval_serializer.is_valid():
-            t7514161hval_serializer.sate()
+            t7514161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1895,7 +1907,7 @@ class T765161hsView(View):
          t765161h_data=JSONParser().parse(request)
          t765161h_serializer=T765161hSerializer(data=t765161h_data)
          if t765161h_serializer.is_valid():
-             t765161h_serializer.sate()
+             t765161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1909,7 +1921,7 @@ class T765161hsView(View):
          t765161h=T765161hs.objects.get(id_agua_sacada=t765161h_data['id_agua_sacada'])
          t765161h_serializer=T1073161hSerializer(t765161h,data=t765161h_data)
          if t765161h_serializer.is_valid():
-            t765161h_serializer.sate()
+            t765161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1926,7 +1938,7 @@ class T765161hvalsView(View):
          t765161hval_data=JSONParser().parse(request)
          t765161hval_serializer=T765161hvalSerializer(data=t765161hval_data)
          if t765161hval_serializer.is_valid():
-             t765161hval_serializer.sate()
+             t765161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1940,7 +1952,7 @@ class T765161hvalsView(View):
          t765161hval=T765161hvals.objects.get(id_agua_sacada_val=t765161hval_data['id_agua_sacada_val'])
          t765161hval_serializer=T1073161hSerializer(t765161hval,data=t765161hval_data)
          if t765161hval_serializer.is_valid():
-            t765161hval_serializer.sate()
+            t765161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1957,7 +1969,7 @@ class T775161hsView(View):
          t775161h_data=JSONParser().parse(request)
          t775161h_serializer=T775161hSerializer(data=t775161h_data)
          if t775161h_serializer.is_valid():
-             t775161h_serializer.sate()
+             t775161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -1971,7 +1983,7 @@ class T775161hsView(View):
          t775161h=T775161hs.objects.get(id_agua_aniadida=t775161h_data['id_agua_aniadida'])
          t775161h_serializer=T1073161hSerializer(t775161h,data=t775161h_data)
          if t775161h_serializer.is_valid():
-            t775161h_serializer.sate()
+            t775161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -1988,7 +2000,7 @@ class T775161hvalsView(View):
          t775161hval_data=JSONParser().parse(request)
          t775161hval_serializer=T775161hvalSerializer(data=t775161hval_data)
          if t775161hval_serializer.is_valid():
-             t775161hval_serializer.sate()
+             t775161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -2002,7 +2014,7 @@ class T775161hvalsView(View):
          t775161hval=T775161hvals.objects.get(id_agua_aniadida_val=t775161hval_data['id_agua_aniadida_val'])
          t775161hval_serializer=T1073161hSerializer(t775161hval,data=t775161hval_data)
          if t775161hval_serializer.is_valid():
-            t775161hval_serializer.sate()
+            t775161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -2019,7 +2031,7 @@ class T91161hsView(View):
          t91161h_data=JSONParser().parse(request)
          t91161h_serializer=T91161hSerializer(data=t91161h_data)
          if t91161h_serializer.is_valid():
-             t91161h_serializer.sate()
+             t91161h_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -2033,7 +2045,7 @@ class T91161hsView(View):
          t91161h=T91161hs.objects.get(id_humedad_rltta=t91161h_data['id_humedad_rltta'])
          t91161h_serializer=T1073161hSerializer(t91161h,data=t91161h_data)
          if t91161h_serializer.is_valid():
-            t91161h_serializer.sate()
+            t91161h_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
@@ -2051,7 +2063,7 @@ class T91161hvalsView(View):
          t91161hval_data=JSONParser().parse(request)
          t91161hval_serializer=T91161hvalSerializer(data=t91161hval_data)
          if t91161hval_serializer.is_valid():
-             t91161hval_serializer.sate()
+             t91161hval_serializer.save()
              return JsonResponse('Se agrrego correctamente',safe=False)
          return   JsonResponse('No se pudo agregar ',safe=False) 
    
@@ -2065,7 +2077,7 @@ class T91161hvalsView(View):
          t91161hval=T91161hvals.objects.get(id_humedad_rltta_val=t91161hval_data['id_humedad_rltta_val'])
          t91161hval_serializer=T1073161hSerializer(t91161hval,data=t91161hval_data)
          if t91161hval_serializer.is_valid():
-            t91161hval_serializer.sate()
+            t91161hval_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
          return JsonResponse("Failed to Update")
 
