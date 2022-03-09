@@ -4,7 +4,9 @@ from backend.models import *
 
 
 class T1073161hSerializer(serializers.ModelSerializer): 
+   
     class Meta: 
+       
          model=T1073161hs
          fields = '__all__'
 

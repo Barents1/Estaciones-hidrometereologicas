@@ -64,7 +64,7 @@ function App () {
   <Routes>
   
       <Route path='/home' element={<Home/>}/>
-      <Route path='/V1073161h' element={<V1073161h/>}/>
+      <Route path='/t1073161h' element={<V1073161h/>}/>
       
       <Route path='/V29311hval' element={<V29311hval/>}/>
       <Route path='/V29311h' element={<V29311h/>}/>
