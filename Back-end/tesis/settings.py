@@ -92,7 +92,7 @@ DATABASES = {
     },
         'NAME':  'bandahm',
         'USER':  'postgres',
-        'PASSWORD':  '123456',
+        'PASSWORD':  '1234',
         'HOST':  'localhost',
         'port':  '5432',
     },

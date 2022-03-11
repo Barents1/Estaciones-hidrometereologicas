@@ -1,3 +1,4 @@
+from datetime import datetime
 from decimal import Decimal
 from pyexpat import model
 from re import template
@@ -16,22 +17,26 @@ from django.views.generic import View
 class Calculos():
 
      
-     def sumar(selfm,fecha):
+     def sumar(self):
 
           # suma=T1073161hs.objects.filter(id_temp_int_baro=8).values_list('valor',flat=True)
           # suma2=T1073161hs.objects.get(suma='valor')
           # suma2=suma.valor
           # return(suma2+4)
+          fecha='2020-05-07T22:37:14Z'
 
-          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
-          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
-          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
+
+          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor', 'fecha_toma')
+          # suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
+          # suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
           valor=0.0
+          #fechacampo = '0000-0-0 0:0:0'
 
           for a in suma:
                valor=a['valor']
+               fechacampo=a['fecha_toma']
                
-          return(valor+4)
+          return( fechacampo)
 
 
 class DatosCalculos():
