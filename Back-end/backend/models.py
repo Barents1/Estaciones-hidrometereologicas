@@ -1,8 +1,10 @@
+from abc import abstractclassmethod
 from datetime import date
 from django.db import models
 
 
-class T1073161hs(models.Model):
+
+class Tabstrac(models.Model):
     id_temp_int_baro = models.AutoField(primary_key=True)
     id_estacion = models.IntegerField()
     id_unidad_medida = models.IntegerField()
@@ -10,6 +12,13 @@ class T1073161hs(models.Model):
     fecha_toma = models.DateTimeField()
     fecha_ingreso = models.DateTimeField()
     valor = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
+   
+    class Meta:
+        abstract =True 
+        
+       
+
+class T1073161hs(Tabstrac):
 
     class Meta:
         managed = False
