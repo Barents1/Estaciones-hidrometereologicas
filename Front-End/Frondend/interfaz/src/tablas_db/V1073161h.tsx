@@ -439,7 +439,7 @@ export class V1073161h extends Component<IProps,IState> {
         {id_temp_int_baro!==0?
         <button type="button"
         className="btn btn-primary float-start"
-        
+        onClick={()=>this.updateClick()}
         >Update</button>
         :null}
 

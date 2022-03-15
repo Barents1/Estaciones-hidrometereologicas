@@ -1,8 +1,9 @@
 import datetime
 from decimal import Decimal
 from pyexpat import model
-
+from rest_framework import serializers
 from re import template
+from backend.models import *
 from urllib import response
 from django.shortcuts import render
 from rest_framework.parsers import JSONParser
@@ -17,10 +18,8 @@ from django.db.models import Q
 from django import forms
 class Calculos():
 
-     
      def precipitacion_1714161h(self):
-          
-           """creacion de un objeto de T1263011h del models"""
+ 
            objeto = T1263011hs()
 
            objeto.id_estacion = 4
@@ -74,73 +73,57 @@ class DatosCalculos():
           calcular.precipitacion_1714161h()
 
 
-class T171481hp():
-      
-    def post(self,request):
-         
-         t171481h_data=JSONParser().parse(request)
-         
-         t171481h_serializer=T171481hSerializer(data=t171481h_data)
-         if t171481h_serializer.is_valid():
-             t171481h_serializer.save()
-             return JsonResponse('Se agrrego correctamente',safe=False)
-         return   JsonResponse('No se pudo agregar ',safe=False) 
-   
-    def get(self,request):
-         t171481hs = T171481hs.objects.all()
-         t171481h_serializer=T171481hSerializer(t171481hs,many=True)
-         return JsonResponse(t171481h_serializer.data,safe=False)
 
-    def put(self,request):
-         t171481h_data=JSONParser().parse(request)
-         t171481h=T171481hs.objects.get(id_prec=t171481h_data['id_prec'])
-         t171481h_serializer=T1073161hSerializer(t171481h,data=t171481h_data)
-         if t171481h_serializer.is_valid():
-            t171481h_serializer.save()
-            return JsonResponse("Updated Successfully",safe=False)
-         return JsonResponse("Failed to Update")
-
-    def delete(self,request,id):
-        t171481h=T171481hs.objects.get(id_prec=id)
-        t171481h.delete()
-        return JsonResponse("Deleted Successfully",safe=False)     
-
-
-class T1073161hsView(View):
+class Principa(View):
      
-      
-     def post(self,request,):
+     def __init__(self, serial,model):
+
+          self.s= serial
+          self.m= model
+     
+     def post(self,request):
           datoscal = Calculos()
           print(datoscal.precipitacion_1714161h())
-          t1073161h_data=JSONParser().parse(request)
-          print(t1073161h_data)
-          t1073161h_serializer=T1073161hSerializer(data=t1073161h_data)
-          if t1073161h_serializer.is_valid():
-               t1073161h_serializer.save()
+          data=JSONParser().parse(request)
+          serializer=self.s(data=data)
+          if serializer.is_valid():
+               serializer.save()
                return JsonResponse('Se agrrego correctamente',safe=False)
           return   JsonResponse('No se pudo agregar ',safe=False) 
      
      def get(self,request):
           
-          t1073161hs = T1073161hs.objects.all()
-          t1073161h_serializer=T1073161hSerializer(t1073161hs,many=True)
-          return JsonResponse(t1073161h_serializer.data,safe=False)
-
+          data_model = self.m.objects.all()
+          serializer=self.s(data_model,many=True)
+          return JsonResponse(serializer.data,safe=False)
 
      def put(self,request):
-          t1073161h_data=JSONParser().parse(request)
-          t1073161h=T1073161hs.objects.get(id_temp_int_baro=t1073161h_data['id_temp_int_baro'])
-          t1073161h_serializer=T1073161hSerializer(t1073161h,data=t1073161h_data)
-          if t1073161h_serializer.is_valid():
-               t1073161h_serializer.save()
+          
+          data=JSONParser().parse(request)
+          data_model=self.m.objects.get(id_temp_int_baro=data['id_temp_int_baro'])
+          serializer=self.s(data_model,data=data)
+          if serializer.is_valid():
+               serializer.save()
                return JsonResponse("Updated Successfully",safe=False)
           return JsonResponse("Failed to Update")
 
      def delete(self,request,id):
-          t1073161h=T1073161hs.objects.get(id_temp_int_baro=id)
-          t1073161h.delete()
+          data_model=self.m.objects.get(id_temp_int_baro=id)
+          data_model.delete()
           return JsonResponse("Deleted Successfully",safe=False)
-     
+
+class T1073161hsView(Principa):
+
+     def __init__(self):
+          Principa.__init__(self,T1073161hSerializer,T1073161hs)
+
+
+
+
+
+          
+  
+  
 class T1073161hvalsView(View):
      
      def post(self,request):
