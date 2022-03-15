@@ -1,6 +1,7 @@
-from datetime import datetime
+import datetime
 from decimal import Decimal
 from pyexpat import model
+
 from re import template
 from urllib import response
 from django.shortcuts import render
@@ -12,46 +13,107 @@ from backend.models import *
 from backend.serializers import *
 from django.http import HttpResponse
 from django.views.generic import View
-
-
+from django.db.models import Q 
+from django import forms
 class Calculos():
 
      
-     def sumar(self):
+     def precipitacion_1714161h(self):
+          
+           """creacion de un objeto de T1263011h del models"""
+           objeto = T1263011hs()
 
-          # suma=T1073161hs.objects.filter(id_temp_int_baro=8).values_list('valor',flat=True)
-          # suma2=T1073161hs.objects.get(suma='valor')
-          # suma2=suma.valor
-          # return(suma2+4)
-          fecha='2020-05-07T22:37:14Z'
+           objeto.id_estacion = 4
+           objeto.id_unidad_medida = 4
+           objeto.id_usuario = 0
+           objeto.fecha_toma = "2022-03-08 13:00:00"
+           objeto.fecha_ingreso = "2022-03-08 13:00:00"
+          
 
 
-          suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor', 'fecha_toma')
-          # suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
-          # suma=T1073161hs.objects.filter(fecha_toma='2020-05-07T22:37:14Z').values('valor')
-          valor=0.0
-          #fechacampo = '0000-0-0 0:0:0'
+           fecha="2022-03-08"
+           fechadiasiguiente="2022-03-09"
+           valor13h =T1714161hs.objects.filter(fecha_toma__range=(fecha+" 13:00:00",fecha+" 13:59:59")).values('valor')
+           valor19h =T1714161hs.objects.filter(fecha_toma__range=(fecha+" 19:00:00",fecha+" 19:59:59")).values('valor')
+           valor07hdiasiguiente =T1714161hs.objects.filter(fecha_toma__range=(fechadiasiguiente+" 07:00:00",fechadiasiguiente+" 07:59:59")).values('valor')
+          
+           if valor13h.exists()==True :
+               for a in valor13h:
+                    valor1=a['valor']
+           else:
+                valor1='no existe valor 13 horas '
+                return (valor1)
 
-          for a in suma:
-               valor=a['valor']
-               fechacampo=a['fecha_toma']
-               
-          return( fechacampo)
+           if valor19h.exists()==True :
+               for a in valor19h:
+                    valor2=a['valor']
+           else:
+                valor2='no existe valor 19 horas'
+                return (valor2)
 
+           if valor07hdiasiguiente.exists()==True :
+               for a in valor07hdiasiguiente:
+                    valor3=a['valor']
+           else:
+                valor3='no existe valor 07 horas dia siguiente'
+                return (valor3)
+          
+
+           valor=valor1+valor2+valor3
+
+           objeto.valor = valor
+          #  print(objeto) 
+          #  exit
+           objeto.save()
+           return (valor)
 
 class DatosCalculos():
 
      def resul(self):
           calcular = Calculos()
-          calcular.sumar()
-          
+          calcular.precipitacion_1714161h()
+
+
+class T171481hp():
+      
+    def post(self,request):
+         
+         t171481h_data=JSONParser().parse(request)
+         
+         t171481h_serializer=T171481hSerializer(data=t171481h_data)
+         if t171481h_serializer.is_valid():
+             t171481h_serializer.save()
+             return JsonResponse('Se agrrego correctamente',safe=False)
+         return   JsonResponse('No se pudo agregar ',safe=False) 
+   
+    def get(self,request):
+         t171481hs = T171481hs.objects.all()
+         t171481h_serializer=T171481hSerializer(t171481hs,many=True)
+         return JsonResponse(t171481h_serializer.data,safe=False)
+
+    def put(self,request):
+         t171481h_data=JSONParser().parse(request)
+         t171481h=T171481hs.objects.get(id_prec=t171481h_data['id_prec'])
+         t171481h_serializer=T1073161hSerializer(t171481h,data=t171481h_data)
+         if t171481h_serializer.is_valid():
+            t171481h_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+         return JsonResponse("Failed to Update")
+
+    def delete(self,request,id):
+        t171481h=T171481hs.objects.get(id_prec=id)
+        t171481h.delete()
+        return JsonResponse("Deleted Successfully",safe=False)     
+
+
 class T1073161hsView(View):
      
       
-     def post(self,request):
+     def post(self,request,):
           datoscal = Calculos()
-          print(datoscal.sumar())
+          print(datoscal.precipitacion_1714161h())
           t1073161h_data=JSONParser().parse(request)
+          print(t1073161h_data)
           t1073161h_serializer=T1073161hSerializer(data=t1073161h_data)
           if t1073161h_serializer.is_valid():
                t1073161h_serializer.save()

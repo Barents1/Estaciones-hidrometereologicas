@@ -11,7 +11,11 @@ urlpatterns=[
       url(r'^t29311hval/(?P<id>\d+)$',csrf_exempt(views.T29311hvalsView.as_view()),name='t29311hval'),
       url(r'^t29311h$',csrf_exempt(views.T29311hsView.as_view()),name='t29311h'),
       url(r'^t29311h/(?P<id>\d+)$',csrf_exempt(views.T29311hsView.as_view()),name='t29311h'),   
-      url(r'^caleva$',csrf_exempt(views.CalView.as_view()),name='caleva'),
+      url(r'^t171481h$',csrf_exempt(views.T171481hsView.as_view()),name='t171481h'),
+      url(r'^t1073161h/(?P<id>\d+)$',csrf_exempt(views.T171481hsView.as_view()),name='t171481h'),
+
+
+      
 
    
 #     #path('admin/', admin.site.urls),
